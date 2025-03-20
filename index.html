@@ -3,11 +3,47 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Bootstrap Navbar & Grid</title>
     <link rel="stylesheet" href="bootstrap.css" />
+    <style>
+      .navbar {
+        background-color: transparent;
+        transition: background-color 1s;
+      }
+      .navbar:hover {
+        background-color: rgb(238, 232, 232);
+      }
+      .navbar-nav {
+        gap: 10px;
+      }
+      .spacer {
+        flex-grow: 1;
+      }
+    </style>
   </head>
   <body>
-    <h1 style="text-align: center">Hello Bootsrap</h1>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="./img\andreas.png" alt="Logo" height="60" />
+        </a>
+        <div class="navbar-nav">
+          <a class="nav-link" href="#">Link 1</a>
+          <a class="nav-link" href="#">Link 2</a>
+          <a class="nav-link" href="#">Link 3</a>
+          <a class="nav-link" href="#">Link 4</a>
+          <a class="nav-link" href="#">Link 5</a>
+        </div>
+        <div class="spacer"></div>
+        <div class="navbar-nav">
+          <a class="nav-link" href="#"><img src="./img\nav\search.png" alt="IMG6" height="30" draggable="false"/></a>
+          <a class="nav-link" href="#"><img src="./img\nav\account.png" alt="IMG7" height="30" draggable="false"/></a>
+          <a class="nav-link" href="#"><img src="./img\nav\wishlist.png" alt="IMG8" height="30" draggable="false"/></a>
+          <a class="nav-link" href="#"><img src="./img\nav\shopping-cart.png" alt="IMG9" height="30" draggable="false"/></a>
+        </div>
+      </div>
+    </nav>
+    
     <div class="container border text-center">
       <div class="row">
         <div class="col-sm-6 border">Size 6</div>

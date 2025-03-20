@@ -12055,3 +12055,7 @@ textarea.form-control-lg {
 }
 
 /*# sourceMappingURL=bootstrap.css.map */
+
+a:hover{
+  filter: invert(100%)
+}
