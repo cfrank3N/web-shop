@@ -1,9 +1,3 @@
-/*const data = fetch('https://fakestoreapi.com/products')
-  .then(response => response.json())
-  .then(data => console.log(data));
-
-  
-*/
 let products = [];
 
 async function fetchProducts() {
@@ -18,7 +12,7 @@ async function fetchProducts() {
 
 async function main() {
   await fetchProducts();
-  for (let i = 0; i < 12; i++){ //products.length
+  for (let i = 0; i < products.length; i++){
     document.getElementById(`bild${i}`).src = products[i].image;
     document.getElementById(`title${i}`).innerHTML = products[i].title;
     document.getElementById(`desc${i}`).innerHTML = products[i].description; 
