@@ -15,7 +15,7 @@
       }
     </style>
     
-    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <nav class="navbar navbar-expand-sm navbar-light">
       <div class="container">
         <a href="#" class="navbar-brand mb-0 h1">
           <img
@@ -73,8 +73,64 @@
       <div class="container">
         <hr>
       </div>
-    
 
+
+      <style>
+        .container-custom {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        .text-content h1 {
+            font-size: 5rem;
+            font-weight: bold;
+        }
+        .text-content p {
+            font-size: 1.1rem;
+            color: #555;
+        }
+        .btn-custom {
+            background-color: #ff5722;
+            border: none;
+            padding: 10px 20px;
+            color: white;
+            border-radius: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+        }
+        .btn-custom:hover {
+            background-color: #e64a19;
+        }
+        .image-container img {
+            max-width: 100%;
+            border-top-right-radius: 30px;
+            border-bottom-left-radius: 30px;
+        } 
+        .image-container {
+            margin-left: 30px; /* Adjust the value as needed */
+        }
+    </style>
+    
+      <div class="container container-custom">
+        <div class="row align-items-center w-100">
+            <div class="col-md-6 text-content">
+                <h1>Discover and find your own fashion.</h1>
+                <p>Explore our curated collection of stylish clothing and accessories tailored to your unique taste.</p>
+                <button class="btn btn-custom">EXPLORE NOW</button>
+            </div>
+            <div class="col-md-6 text-center">
+              <div class="image-container">
+                <img src="./img/nav/bioglow.png" alt="Fashion Products" class="img-fluid">
+              </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+      <hr>
+    </div>
+    <div class="container text-center">
+      <h1>All Products</h1>
+    </div>
     <div class="container mt-5">
       <div class="row">
         <div class="col-sm-6 col-lg-3 my-3">
