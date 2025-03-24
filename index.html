@@ -20,7 +20,7 @@
         <a href="#" class="navbar-brand mb-0 h1">
           <img
             class="d-inline-block align-top" 
-            src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" 
+            src="./img/nav/andreas.png" 
             width="30"
             height="30" 
             alt="Logo"
@@ -80,6 +80,8 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
+            justify-content: space-between; 
+            padding: 0;
         }
         .text-content h1 {
             font-size: 5rem;
@@ -101,29 +103,61 @@
             background-color: #e64a19;
         }
         .image-container img {
-            max-width: 100%;
+            width: 100%;
             border-top-right-radius: 30px;
             border-bottom-left-radius: 30px;
         } 
-        .image-container {
-            margin-left: 30px; /* Adjust the value as needed */
+        .row {
+            margin: 0; 
+            width: 100%; 
         }
+        .col-md-6 {
+            padding: 0; 
+        }
+        .text-content {
+            flex: 1; 
+            
+        }
+        .image-container {
+            flex: 0 1 auto;
+        }
+        @media (max-width: 767px) {
+        .container-custom {
+            flex-direction: column; 
+            text-align: center; 
+        }
+        .text-content h1 {
+            font-size: 3rem; 
+        }
+        .text-content p {
+            font-size: 1rem; 
+        }
+        .btn-custom {
+            width: 100%; 
+        }
+        .image-container img {
+            width: 80%; 
+            margin-top: 20px;
+        }
+    }
     </style>
-    
-      <div class="container container-custom">
+    <div class="container">
+    <div class="container container-custom">
         <div class="row align-items-center w-100">
             <div class="col-md-6 text-content">
                 <h1>Discover and find your own fashion.</h1>
                 <p>Explore our curated collection of stylish clothing and accessories tailored to your unique taste.</p>
                 <button class="btn btn-custom">EXPLORE NOW</button>
             </div>
-            <div class="col-md-6 text-center">
-              <div class="image-container">
-                <img src="./img/nav/bioglow.png" alt="Fashion Products" class="img-fluid">
-              </div>
+            <div class="col-md-6">
+                <div class="image-container">
+                    <img src="./img/nav/bioglow.png" alt="Fashion Products" class="img-fluid">
+                </div>
             </div>
         </div>
     </div>
+  </div>
+    
 
     <div class="container">
       <hr>
