@@ -16,7 +16,7 @@ async function main() {
     document.getElementById(`bild${i}`).src = products[i].image;
     document.getElementById(`title${i}`).innerHTML = products[i].title;
     document.getElementById(`desc${i}`).innerHTML = products[i].description;
-    document.getElementById(`price${i}`).innerHTML = € + products[i].price;
+    document.getElementById(`price${i}`).innerHTML = '€' + products[i].price.toFixed(2);
   }
 
 }
