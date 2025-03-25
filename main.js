@@ -14,11 +14,17 @@ async function main() {
   await fetchProducts();
   for (let i = 0; i < products.length; i++){
     document.getElementById(`bild${i}`).src = products[i].image;
-    document.getElementById(`title${i}`).innerHTML = products[i].title;
+    // document.getElementById(`title${i}`).innerHTML = products[i].title;
+    document.getElementById(`title${i}`).innerHTML = getFirstFiveWords(products[i].title) // 6 första orden fr title
     document.getElementById(`desc${i}`).innerHTML = products[i].description;
     document.getElementById(`price${i}`).innerHTML = '€' + products[i].price.toFixed(2);
   }
 
+}
+
+function getFirstFiveWords(text) {
+  const words = text.split(" ");
+  return words.length > 5 ? words.slice(0, 6).join(" ") + "..." : text;
 }
 
 main();
