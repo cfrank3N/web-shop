@@ -10,19 +10,12 @@
     <style>
       .btn-custom {
         background-color: #ff5722;
-        border: none;
-        padding: 10px 20px;
-        color: white;
-        border-radius: 30px;
-        /*box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);*/
       }
       .btn-custom:hover {
         background-color: #e64a19;
       }
       .text-bg-custom {
         background-color: #f1f1f1;
-        border: none;
-        border-radius: 30px;
       }
     </style>
     <!--Nav-bar-->
@@ -138,7 +131,7 @@
             <label for="name" class="form-label fs-6">Full Name</label>
             <input
               type="text"
-              class="form-control text-bg-custom shadow-sm"
+              class="form-control text-bg-custom shadow-sm rounded-pill border-0"
               id="name"
               placeholder="Caroline Hägglund"
             />
@@ -147,7 +140,7 @@
             <label for="phone" class="form-label fs-6">Phone</label>
             <input
               type="text"
-              class="form-control text-bg-custom shadow-sm"
+              class="form-control text-bg-custom shadow-sm rounded-pill border-0"
               id="phone"
               placeholder="(+46) 73 123 10 10"
             />
@@ -156,7 +149,7 @@
             <label for="email" class="form-label fs-6">E-mail</label>
             <input
               type="text"
-              class="form-control text-bg-custom shadow-sm"
+              class="form-control text-bg-custom shadow-sm rounded-pill border-0"
               id="email"
               placeholder="example@email.com"
             />
@@ -165,7 +158,7 @@
             <label for="street" class="form-label fs-6">Street</label>
             <input
               type="text"
-              class="form-control text-bg-custom shadow-sm"
+              class="form-control text-bg-custom shadow-sm rounded-pill border-0"
               id="street"
               placeholder="Strandvägen 1"
             />
@@ -174,7 +167,7 @@
             <label for="zip-code" class="form-label fs-6">Zip code</label>
             <input
               type="text"
-              class="form-control text-bg-custom shadow-sm"
+              class="form-control text-bg-custom shadow-sm rounded-pill border-0"
               id="zip-code"
               placeholder="126 34"
             />
@@ -183,13 +176,16 @@
             <label for="city" class="form-label fs-6">City</label>
             <input
               type="text"
-              class="form-control text-bg-custom shadow-sm"
+              class="form-control text-bg-custom shadow-sm rounded-pill border-0"
               id="city"
               placeholder="Stockholm"
             />
           </div>
           <div class="my-4">
-            <button type="submit" class="btn btn-custom shadow">
+            <button
+              type="submit"
+              class="btn btn-custom text-white shadow rounded-pill"
+            >
               Confirm order
             </button>
           </div>
