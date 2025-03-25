@@ -100,10 +100,11 @@
     .btn-custom {
         background-color: #ff5722;
         border: none;
-        padding: 10px 20px;
+        padding: 5px 18px;
         color: white;
         border-radius: 30px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+
     }
 
     .btn-custom:hover {
@@ -134,6 +135,39 @@
         flex: 0 1 auto;
     }
 
+    .productImage {
+        flex: 1;
+        padding-right: 1rem;
+        padding-left: 1rem;
+        padding-top: 0.1rem;
+        padding-bottom: 1rem;
+    }
+
+    .product-text-container {
+        width: 100%;
+        padding: 1rem;
+        max-height: 180px;
+        overflow: hidden;
+        overflow-style: marquee-block;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+
+    }
+
+    .product-desc {
+        min-height: 4rem;
+        margin-bottom: 0;
+
+    }
+
+    .product-title {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+
+    }
+
     @media (max-width: 767px) {
         .container-custom {
             flex-direction: column;
@@ -155,6 +189,16 @@
         .image-container img {
             width: 80%;
             margin-top: 20px;
+        }
+
+        .card-body {
+            flex: 0.5;
+            display: flex;
+            flex-direction: column;
+            margin-left: -1rem;
+            margin-right: -1rem;
+            padding-left: 2rem;
+            padding-right: 2rem;
         }
     }
 </style>
@@ -187,72 +231,85 @@
         <div class="col-sm-6 col-lg-3 my-3">
             <div class="card shadow h-100">
                 <div class="card-body">
-                    <img id="bild0" src="" class="card-img-top img-fluid w-100 object-fit-contain"
-                         style="max-height: 15rem"/>
-                    <h5 id="title0" class="card-title mt-4"></h5>
-                    <p id="desc0" class="card-text text-truncate"></p>
+                    <!-- pics -->
+                    <div class="productImage">
+                        <img id="bild0" src="" class="card-img-top img-fluid w-100 object-fit-contain"
+                             style="max-height: 15rem"/>
+                    </div>
+                    <!-- info -->
+                    <div class="product-text-container">
+                        <h5 id="title0" class="card-title product-title mb-1"></h5>
+                        <p id="desc0" class="card-text product-desc mb-0"></p>
+                    </div>
                 </div>
-
+                <!-- bottom section -->
                 <div class="mt-auto mb-3 me-3 px-3 d-flex justify-content-between align-items-center">
                     <span id="price0" class="fw-bold me-3 fs-5"></span>
-                    <div class="btn btn-primary">buy</div>
+                    <div class="btn btn-custom">buy</div>
                 </div>
-
-
             </div>
         </div>
+
         <div class="col-sm-6 col-lg-3 my-3">
             <div class="card shadow h-100">
                 <div class="card-body">
-                    <img
-                            id="bild1"
-                            src=""
-                            class="card-img-top img-fluid w-100 object-fit-contain"
-                            style="max-height: 15rem"
-                    />
-                    <h5 id="title1" class="card-title mt-4"></h5>
-                    <p id="desc1" class="card-text text-truncate text-truncate"></p>
+                    <!-- pics -->
+                    <div class="productImage">
+                        <img id="bild1" src="" class="card-img-top img-fluid w-100 object-fit-contain"
+                             style="max-height: 15rem"/>
+                    </div>
+                    <!-- info -->
+                    <div class="product-text-container">
+                        <h5 id="title1" class="card-title product-title mb-1"></h5>
+                        <p id="desc1" class="card-text product-desc mb-0"></p>
+                    </div>
                 </div>
+                <!-- bottom section -->
                 <div class="mt-auto mb-3 me-3 px-3 d-flex justify-content-between align-items-center">
                     <span id="price1" class="fw-bold me-3 fs-5"></span>
-                    <div class="btn btn-primary">buy</div>
+                    <div class="btn btn-custom">buy</div>
                 </div>
             </div>
         </div>
         <div class="col-sm-6 col-lg-3 my-3">
             <div class="card shadow h-100">
                 <div class="card-body">
-                    <img
-                            id="bild2"
-                            src=""
-                            class="card-img-top img-fluid w-100 object-fit-contain"
-                            style="max-height: 15rem"
-                    />
-                    <h5 id="title2" class="card-title mt-4"></h5>
-                    <p id="desc2" class="card-text text-truncate"></p>
-
+                    <!-- pics -->
+                    <div class="productImage">
+                        <img id="bild2" src="" class="card-img-top img-fluid w-100 object-fit-contain"
+                             style="max-height: 15rem"/>
+                    </div>
+                    <!-- info -->
+                    <div class="product-text-container">
+                        <h5 id="title2" class="card-title product-title mb-1"></h5>
+                        <p id="desc2" class="card-text product-desc mb-0"></p>
+                    </div>
                 </div>
+                <!-- bottom section -->
                 <div class="mt-auto mb-3 me-3 px-3 d-flex justify-content-between align-items-center">
                     <span id="price2" class="fw-bold me-3 fs-5"></span>
-                    <div class="btn btn-primary">buy</div>
+                    <div class="btn btn-custom">buy</div>
                 </div>
             </div>
         </div>
         <div class="col-sm-6 col-lg-3 my-3">
             <div class="card shadow h-100">
                 <div class="card-body">
-                    <img
-                            id="bild3"
-                            src=""
-                            class="card-img-top img-fluid w-100 object-fit-contain"
-                            style="max-height: 15rem"
-                    />
-                    <h5 id="title3" class="card-title mt-4"></h5>
-                    <p id="desc3" class="card-text text-truncate"></p>
+                    <!-- pics -->
+                    <div class="productImage">
+                        <img id="bild3" src="" class="card-img-top img-fluid w-100 object-fit-contain"
+                             style="max-height: 15rem"/>
+                    </div>
+                    <!-- info -->
+                    <div class="product-text-container">
+                        <h5 id="title3" class="card-title product-title mb-1"></h5>
+                        <p id="desc3" class="card-text product-desc mb-0"></p>
+                    </div>
                 </div>
+                <!-- bottom section -->
                 <div class="mt-auto mb-3 me-3 px-3 d-flex justify-content-between align-items-center">
                     <span id="price3" class="fw-bold me-3 fs-5"></span>
-                    <div class="btn btn-primary">buy</div>
+                    <div class="btn btn-custom">buy</div>
                 </div>
             </div>
         </div>
@@ -262,72 +319,83 @@
         <div class="col-sm-6 col-lg-3 my-3">
             <div class="card shadow h-100">
                 <div class="card-body">
-                    <img
-                            id="bild4"
-                            src=""
-                            class="card-img-top img-fluid w-100 object-fit-contain"
-                            style="max-height: 15rem"
-                    />
-                    <h5 id="title4" class="card-title mt-4"></h5>
-                    <p id="desc4" class="card-text text-truncate"></p>
+                    <!-- pics -->
+                    <div class="productImage">
+                        <img id="bild4" src="" class="card-img-top img-fluid w-100 object-fit-contain"
+                             style="max-height: 15rem"/>
+                    </div>
+                    <!-- info -->
+                    <div class="product-text-container">
+                        <h5 id="title4" class="card-title product-title mb-1"></h5>
+                        <p id="desc4" class="card-text product-desc mb-0"></p>
+                    </div>
                 </div>
+                <!-- bottom section -->
                 <div class="mt-auto mb-3 me-3 px-3 d-flex justify-content-between align-items-center">
                     <span id="price4" class="fw-bold me-3 fs-5"></span>
-                    <div class="btn btn-primary">buy</div>
+                    <div class="btn btn-custom">buy</div>
                 </div>
             </div>
         </div>
         <div class="col-sm-6 col-lg-3 my-3">
             <div class="card shadow h-100">
                 <div class="card-body">
-                    <img
-                            id="bild5"
-                            src=""
-                            class="card-img-top img-fluid w-100 object-fit-contain"
-                            style="max-height: 15rem"
-                    />
-                    <h5 id="title5" class="card-title mt-4"></h5>
-                    <p id="desc5" class="card-text text-truncate"></p>
+                    <!-- pics -->
+                    <div class="productImage">
+                        <img id="bild5" src="" class="card-img-top img-fluid w-100 object-fit-contain"
+                             style="max-height: 15rem"/>
+                    </div>
+                    <!-- info -->
+                    <div class="product-text-container">
+                        <h5 id="title5" class="card-title product-title mb-1"></h5>
+                        <p id="desc5" class="card-text product-desc mb-0"></p>
+                    </div>
                 </div>
+                <!-- bottom section -->
                 <div class="mt-auto mb-3 me-3 px-3 d-flex justify-content-between align-items-center">
                     <span id="price5" class="fw-bold me-3 fs-5"></span>
-                    <div class="btn btn-primary">buy</div>
+                    <div class="btn btn-custom">buy</div>
                 </div>
             </div>
         </div>
         <div class="col-sm-6 col-lg-3 my-3">
             <div class="card shadow h-100">
                 <div class="card-body">
-                    <img
-                            id="bild6"
-                            src=""
-                            class="card-img-top img-fluid w-100 object-fit-contain"
-                            style="max-height: 15rem"
-                    />
-                    <h5 id="title6" class="card-title mt-4"></h5>
-                    <p id="desc6" class="card-text text-truncate"></p>
+                    <div class="productImage">
+                        <img id="bild6" src="" class="card-img-top img-fluid w-100 object-fit-contain"
+                             style="max-height: 15rem"/>
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h5 id="title6" class="card-title mt-4"></h5>
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <p id="desc6" class="card-text text-truncate"></p>
+                    </div>
                 </div>
                 <div class="mt-auto mb-3 me-3 px-3 d-flex justify-content-between align-items-center">
                     <span id="price6" class="fw-bold me-3 fs-5"></span>
-                    <div class="btn btn-primary">buy</div>
+                    <div class="btn btn-custom">buy</div>
                 </div>
             </div>
         </div>
         <div class="col-sm-6 col-lg-3 my-3">
             <div class="card shadow h-100">
                 <div class="card-body">
-                    <img
-                            id="bild7"
-                            src=""
-                            class="card-img-top img-fluid w-100 object-fit-contain"
-                            style="max-height: 15rem"
-                    />
-                    <h5 id="title7" class="card-title mt-4"></h5>
-                    <p id="desc7" class="card-text text-truncate"></p>
+                    <!-- pics -->
+                    <div class="productImage">
+                        <img id="bild7" src="" class="card-img-top img-fluid w-100 object-fit-contain"
+                             style="max-height: 15rem"/>
+                    </div>
+                    <!-- info -->
+                    <div class="product-text-container">
+                        <h5 id="title7" class="card-title product-title mb-1"></h5>
+                        <p id="desc7" class="card-text product-desc mb-0"></p>
+                    </div>
                 </div>
+                <!-- bottom section -->
                 <div class="mt-auto mb-3 me-3 px-3 d-flex justify-content-between align-items-center">
                     <span id="price7" class="fw-bold me-3 fs-5"></span>
-                    <div class="btn btn-primary">buy</div>
+                    <div class="btn btn-custom">buy</div>
                 </div>
             </div>
         </div>
@@ -337,72 +405,84 @@
         <div class="col-sm-6 col-lg-3 my-3">
             <div class="card shadow h-100">
                 <div class="card-body">
-                    <img
-                            id="bild8"
-                            src=""
-                            class="card-img-top img-fluid w-100 object-fit-contain"
-                            style="max-height: 15rem"
-                    />
-                    <h5 id="title8" class="card-title mt-4"></h5>
-                    <p id="desc8" class="card-text text-truncate"></p>
+                    <!-- pics -->
+                    <div class="productImage">
+                        <img id="bild8" src="" class="card-img-top img-fluid w-100 object-fit-contain"
+                             style="max-height: 15rem"/>
+                    </div>
+                    <!-- info -->
+                    <div class="product-text-container">
+                        <h5 id="title8" class="card-title product-title mb-1"></h5>
+                        <p id="desc8" class="card-text product-desc mb-0"></p>
+                    </div>
                 </div>
+                <!-- bottom section -->
                 <div class="mt-auto mb-3 me-3 px-3 d-flex justify-content-between align-items-center">
                     <span id="price8" class="fw-bold me-3 fs-5"></span>
-                    <div class="btn btn-primary">buy</div>
+                    <div class="btn btn-custom">buy</div>
                 </div>
             </div>
         </div>
         <div class="col-sm-6 col-lg-3 my-3">
             <div class="card shadow h-100">
                 <div class="card-body">
-                    <img
-                            id="bild9"
-                            src=""
-                            class="card-img-top img-fluid w-100 object-fit-contain"
-                            style="max-height: 15rem"
-                    />
-                    <h5 id="title9" class="card-title mt-4"></h5>
-                    <p id="desc9" class="card-text text-truncate"></p>
+                    <!-- pics -->
+                    <div class="productImage">
+                        <img id="bild9" src="" class="card-img-top img-fluid w-100 object-fit-contain"
+                             style="max-height: 15rem"/>
+                    </div>
+                    <!-- info -->
+                    <div class="product-text-container">
+                        <h5 id="title9" class="card-title product-title mb-1"></h5>
+                        <p id="desc9" class="card-text product-desc mb-0"></p>
+                    </div>
                 </div>
+                <!-- bottom section -->
                 <div class="mt-auto mb-3 me-3 px-3 d-flex justify-content-between align-items-center">
-                    <span id="price9" class="fw-bold me-3 fs-5"></span>
-                    <div class="btn btn-primary">buy</div>
+                    <span id="price1" class="fw-bold me-3 fs-5"></span>
+                    <div class="btn btn-custom">buy</div>
                 </div>
             </div>
         </div>
         <div class="col-sm-6 col-lg-3 my-3">
             <div class="card shadow h-100">
                 <div class="card-body">
-                    <img
-                            id="bild10"
-                            src=""
-                            class="card-img-top img-fluid w-100 object-fit-contain"
-                            style="max-height: 15rem"
-                    />
-                    <h5 id="title10" class="card-title mt-4"></h5>
-                    <p id="desc10" class="card-text text-truncate"></p>
+                    <!-- pics -->
+                    <div class="productImage">
+                        <img id="bild10" src="" class="card-img-top img-fluid w-100 object-fit-contain"
+                             style="max-height: 15rem"/>
+                    </div>
+                    <!-- info -->
+                    <div class="product-text-container">
+                        <h5 id="title10" class="card-title product-title mb-1"></h5>
+                        <p id="desc10" class="card-text product-desc mb-0"></p>
+                    </div>
                 </div>
+                <!-- bottom section -->
                 <div class="mt-auto mb-3 me-3 px-3 d-flex justify-content-between align-items-center">
                     <span id="price10" class="fw-bold me-3 fs-5"></span>
-                    <div class="btn btn-primary">buy</div>
+                    <div class="btn btn-custom">buy</div>
                 </div>
             </div>
         </div>
         <div class="col-sm-6 col-lg-3 my-3">
             <div class="card shadow h-100">
                 <div class="card-body">
-                    <img
-                            id="bild11"
-                            src=""
-                            class="card-img-top img-fluid w-100 object-fit-contain"
-                            style="max-height: 15rem"
-                    />
-                    <h5 id="title11" class="card-title mt-4"></h5>
-                    <p id="desc11" class="card-text text-truncate"></p>
+                    <!-- pics -->
+                    <div class="productImage">
+                        <img id="bild11" src="" class="card-img-top img-fluid w-100 object-fit-contain"
+                             style="max-height: 15rem"/>
+                    </div>
+                    <!-- info -->
+                    <div class="product-text-container">
+                        <h5 id="title11" class="card-title product-title mb-1"></h5>
+                        <p id="desc11" class="card-text product-desc mb-0"></p>
+                    </div>
                 </div>
+                <!-- bottom section -->
                 <div class="mt-auto mb-3 me-3 px-3 d-flex justify-content-between align-items-center">
                     <span id="price11" class="fw-bold me-3 fs-5"></span>
-                    <div class="btn btn-primary">buy</div>
+                    <div class="btn btn-custom">buy</div>
                 </div>
             </div>
         </div>
@@ -412,72 +492,84 @@
         <div class="col-sm-6 col-lg-3 my-3">
             <div class="card shadow h-100">
                 <div class="card-body">
-                    <img
-                            id="bild12"
-                            src=""
-                            class="card-img-top img-fluid w-100 object-fit-contain"
-                            style="max-height: 15rem"
-                    />
-                    <h5 id="title12" class="card-title mt-4"></h5>
-                    <p id="desc12" class="card-text text-truncate"></p>
+                    <!-- pics -->
+                    <div class="productImage">
+                        <img id="bild12" src="" class="card-img-top img-fluid w-100 object-fit-contain"
+                             style="max-height: 15rem"/>
+                    </div>
+                    <!-- info -->
+                    <div class="product-text-container">
+                        <h5 id="title12" class="card-title product-title mb-1"></h5>
+                        <p id="desc12" class="card-text product-desc mb-0"></p>
+                    </div>
                 </div>
+                <!-- bottom section -->
                 <div class="mt-auto mb-3 me-3 px-3 d-flex justify-content-between align-items-center">
                     <span id="price12" class="fw-bold me-3 fs-5"></span>
-                    <div class="btn btn-primary">buy</div>
+                    <div class="btn btn-custom">buy</div>
                 </div>
             </div>
         </div>
         <div class="col-sm-6 col-lg-3 my-3">
             <div class="card shadow h-100">
                 <div class="card-body">
-                    <img
-                            id="bild13"
-                            src=""
-                            class="card-img-top img-fluid w-100 object-fit-contain"
-                            style="max-height: 15rem"
-                    />
-                    <h5 id="title13" class="card-title mt-4"></h5>
-                    <p id="desc13" class="card-text text-truncate"></p>
+                    <!-- pics -->
+                    <div class="productImage">
+                        <img id="bild13" src="" class="card-img-top img-fluid w-100 object-fit-contain"
+                             style="max-height: 15rem"/>
+                    </div>
+                    <!-- info -->
+                    <div class="product-text-container">
+                        <h5 id="title13" class="card-title product-title mb-1"></h5>
+                        <p id="desc13" class="card-text product-desc mb-0"></p>
+                    </div>
                 </div>
+                <!-- bottom section -->
                 <div class="mt-auto mb-3 me-3 px-3 d-flex justify-content-between align-items-center">
                     <span id="price13" class="fw-bold me-3 fs-5"></span>
-                    <div class="btn btn-primary">buy</div>
+                    <div class="btn btn-custom">buy</div>
                 </div>
             </div>
         </div>
         <div class="col-sm-6 col-lg-3 my-3">
             <div class="card shadow h-100">
                 <div class="card-body">
-                    <img
-                            id="bild14"
-                            src=""
-                            class="card-img-top img-fluid w-100 object-fit-contain"
-                            style="max-height: 15rem"
-                    />
-                    <h5 id="title14" class="card-title mt-4"></h5>
-                    <p id="desc14" class="card-text text-truncate"></p>
+                    <!-- pics -->
+                    <div class="productImage">
+                        <img id="bild14" src="" class="card-img-top img-fluid w-100 object-fit-contain"
+                             style="max-height: 15rem"/>
+                    </div>
+                    <!-- info -->
+                    <div class="product-text-container">
+                        <h5 id="title14" class="card-title product-title mb-1"></h5>
+                        <p id="desc14" class="card-text product-desc mb-0"></p>
+                    </div>
                 </div>
+                <!-- bottom section -->
                 <div class="mt-auto mb-3 me-3 px-3 d-flex justify-content-between align-items-center">
                     <span id="price14" class="fw-bold me-3 fs-5"></span>
-                    <div class="btn btn-primary">buy</div>
+                    <div class="btn btn-custom">buy</div>
                 </div>
             </div>
         </div>
         <div class="col-sm-6 col-lg-3 my-3">
             <div class="card shadow h-100">
                 <div class="card-body">
-                    <img
-                            id="bild15"
-                            src=""
-                            class="card-img-top img-fluid w-100 object-fit-contain"
-                            style="max-height: 15rem"
-                    />
-                    <h5 id="title15" class="card-title mt-4"></h5>
-                    <p id="desc15" class="card-text text-truncate"></p>
+                    <!-- pics -->
+                    <div class="productImage">
+                        <img id="bild15" src="" class="card-img-top img-fluid w-100 object-fit-contain"
+                             style="max-height: 15rem"/>
+                    </div>
+                    <!-- info -->
+                    <div class="product-text-container">
+                        <h5 id="title15" class="card-title product-title mb-1"></h5>
+                        <p id="desc15" class="card-text product-desc mb-0"></p>
+                    </div>
                 </div>
+                <!-- bottom section -->
                 <div class="mt-auto mb-3 me-3 px-3 d-flex justify-content-between align-items-center">
                     <span id="price15" class="fw-bold me-3 fs-5"></span>
-                    <div class="btn btn-primary">buy</div>
+                    <div class="btn btn-custom">buy</div>
                 </div>
             </div>
         </div>
@@ -487,72 +579,84 @@
         <div class="col-sm-6 col-lg-3 my-3">
             <div class="card shadow h-100">
                 <div class="card-body">
-                    <img
-                            id="bild16"
-                            src=""
-                            class="card-img-top img-fluid w-100 object-fit-contain"
-                            style="max-height: 15rem"
-                    />
-                    <h5 id="title16" class="card-title mt-4"></h5>
-                    <p id="desc16" class="card-text text-truncate"></p>
+                    <!-- pics -->
+                    <div class="productImage">
+                        <img id="bild16" src="" class="card-img-top img-fluid w-100 object-fit-contain"
+                             style="max-height: 15rem"/>
+                    </div>
+                    <!-- info -->
+                    <div class="product-text-container">
+                        <h5 id="title16" class="card-title product-title mb-1"></h5>
+                        <p id="desc16" class="card-text product-desc mb-0"></p>
+                    </div>
                 </div>
+                <!-- bottom section -->
                 <div class="mt-auto mb-3 me-3 px-3 d-flex justify-content-between align-items-center">
                     <span id="price16" class="fw-bold me-3 fs-5"></span>
-                    <div class="btn btn-primary">buy</div>
+                    <div class="btn btn-custom">buy</div>
                 </div>
             </div>
         </div>
         <div class="col-sm-6 col-lg-3 my-3">
             <div class="card shadow h-100">
                 <div class="card-body">
-                    <img
-                            id="bild17"
-                            src=""
-                            class="card-img-top img-fluid w-100 object-fit-contain"
-                            style="max-height: 15rem"
-                    />
-                    <h5 id="title17" class="card-title mt-4"></h5>
-                    <p id="desc17" class="card-text text-truncate"></p>
+                    <!-- pics -->
+                    <div class="productImage">
+                        <img id="bild17" src="" class="card-img-top img-fluid w-100 object-fit-contain"
+                             style="max-height: 15rem"/>
+                    </div>
+                    <!-- info -->
+                    <div class="product-text-container">
+                        <h5 id="title17" class="card-title product-title mb-1"></h5>
+                        <p id="desc17" class="card-text product-desc mb-0"></p>
+                    </div>
                 </div>
+                <!-- bottom section -->
                 <div class="mt-auto mb-3 me-3 px-3 d-flex justify-content-between align-items-center">
                     <span id="price17" class="fw-bold me-3 fs-5"></span>
-                    <div class="btn btn-primary">buy</div>
+                    <div class="btn btn-custom">buy</div>
                 </div>
             </div>
         </div>
         <div class="col-sm-6 col-lg-3 my-3">
             <div class="card shadow h-100">
                 <div class="card-body">
-                    <img
-                            id="bild18"
-                            src=""
-                            class="card-img-top img-fluid w-100 object-fit-contain"
-                            style="max-height: 15rem"
-                    />
-                    <h5 id="title18" class="card-title mt-4"></h5>
-                    <p id="desc18" class="card-text text-truncate"></p>
+                    <!-- pics -->
+                    <div class="productImage">
+                        <img id="bild18" src="" class="card-img-top img-fluid w-100 object-fit-contain"
+                             style="max-height: 15rem"/>
+                    </div>
+                    <!-- info -->
+                    <div class="product-text-container">
+                        <h5 id="title18" class="card-title product-title mb-1"></h5>
+                        <p id="desc18" class="card-text product-desc mb-0"></p>
+                    </div>
                 </div>
+                <!-- bottom section -->
                 <div class="mt-auto mb-3 me-3 px-3 d-flex justify-content-between align-items-center">
                     <span id="price18" class="fw-bold me-3 fs-5"></span>
-                    <div class="btn btn-primary">buy</div>
+                    <div class="btn btn-custom">buy</div>
                 </div>
             </div>
         </div>
         <div class="col-sm-6 col-lg-3 my-3">
             <div class="card shadow h-100">
                 <div class="card-body">
-                    <img
-                            id="bild19"
-                            src=""
-                            class="card-img-top img-fluid w-100 object-fit-contain"
-                            style="max-height: 15rem"
-                    />
-                    <h5 id="title19" class="card-title mt-4"></h5>
-                    <p id="desc19" class="card-text text-truncate"></p>
+                    <!-- pics -->
+                    <div class="productImage">
+                        <img id="bild19" src="" class="card-img-top img-fluid w-100 object-fit-contain"
+                             style="max-height: 15rem"/>
+                    </div>
+                    <!-- info -->
+                    <div class="product-text-container">
+                        <h5 id="title19" class="card-title product-title mb-1"></h5>
+                        <p id="desc19" class="card-text product-desc mb-0"></p>
+                    </div>
                 </div>
+                <!-- bottom section -->
                 <div class="mt-auto mb-3 me-3 px-3 d-flex justify-content-between align-items-center">
                     <span id="price19" class="fw-bold me-3 fs-5"></span>
-                    <div class="btn btn-primary">buy</div>
+                    <div class="btn btn-custom">buy</div>
                 </div>
             </div>
         </div>
