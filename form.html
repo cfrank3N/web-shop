@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.css" />
+  </head>
+  <body>
+    <style>
+      .btn-custom {
+        background-color: #ff5722;
+        border: none;
+        padding: 10px 20px;
+        color: white;
+        border-radius: 30px;
+        /*box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);*/
+      }
+      .btn-custom:hover {
+        background-color: #e64a19;
+      }
+      .text-bg-custom {
+        background-color: #f1f1f1;
+        border: none;
+        border-radius: 30px;
+      }
+    </style>
+    <!--Nav-bar-->
+    <nav class="navbar navbar-expand-sm navbar-light">
+      <div class="container">
+        <a href="#" class="navbar-brand mb-0 h1">
+          <img
+            class="d-inline-block align-top"
+            src="./img/nav/andreas.png"
+            width="30"
+            height="30"
+            alt="Logo"
+          />
+          Name
+        </a>
+        <button
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          class="navbar-toggler"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto d-flex align-items-center">
+            <li class="nav-item">
+              <a href="#" class="nav-link active">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" onclick="popupFn()">About</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" onclick="scrollToBottom()"
+                >Contact</a
+              >
+            </li>
+            <li class="nav-item d-flex align-items-center">
+              <a class="nav-link" href="#">
+                <img
+                  class="nav-icon"
+                  src="./img/nav/search.png"
+                  alt="Search Icon"
+                  height="15"
+                  draggable="false"
+                />
+              </a>
+            </li>
+            <li class="nav-item d-flex align-items-center">
+              <a class="nav-link" href="#">
+                <img
+                  class="nav-icon"
+                  src="./img/nav/account.png"
+                  alt="Account Icon"
+                  height="15"
+                  draggable="false"
+                />
+              </a>
+            </li>
+            <li class="nav-item d-flex align-items-center">
+              <a class="nav-link" href="#">
+                <img
+                  class="nav-icon"
+                  src="./img/nav/shopping-cart.png"
+                  alt="Shopping Cart Icon"
+                  height="15"
+                  draggable="false"
+                />
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <hr />
+    </div>
+    <!--End of Nav-bar-->
+    <!--Start of card layout-->
+    <div class="container">
+      <h3 class="my-3">Your cart</h3>
+      <div class="col-sm-7">
+        <div class="card">
+          <div class="card-header">Header</div>
+          <div class="row">
+            <div class="col-sm-4">
+              <img
+                src="img/nav/andreas.png"
+                class="img-fluid rounded"
+                alt="Image not found"
+              />
+            </div>
+            <div class="col-sm-8">
+              <div class="card-body">
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--End of card layout-->
+    <!--Start of Form-->
+    <div class="container">
+      <h3 class="my-3">Checkout</h3>
+      <div class="col-sm-7">
+        <form class="form" id="form">
+          <div class="mb-3">
+            <label for="name" class="form-label fs-6">Full Name</label>
+            <input
+              type="text"
+              class="form-control text-bg-custom shadow-sm"
+              id="name"
+              placeholder="Caroline Hägglund"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="phone" class="form-label fs-6">Phone</label>
+            <input
+              type="text"
+              class="form-control text-bg-custom shadow-sm"
+              id="phone"
+              placeholder="(+46) 73 123 10 10"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label fs-6">E-mail</label>
+            <input
+              type="text"
+              class="form-control text-bg-custom shadow-sm"
+              id="email"
+              placeholder="example@email.com"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="street" class="form-label fs-6">Street</label>
+            <input
+              type="text"
+              class="form-control text-bg-custom shadow-sm"
+              id="street"
+              placeholder="Strandvägen 1"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="zip-code" class="form-label fs-6">Zip code</label>
+            <input
+              type="text"
+              class="form-control text-bg-custom shadow-sm"
+              id="zip-code"
+              placeholder="126 34"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="city" class="form-label fs-6">City</label>
+            <input
+              type="text"
+              class="form-control text-bg-custom shadow-sm"
+              id="city"
+              placeholder="Stockholm"
+            />
+          </div>
+          <div class="my-4">
+            <button type="submit" class="btn btn-custom shadow">
+              Confirm order
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script src="bootstrap.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
