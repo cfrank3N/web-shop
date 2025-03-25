@@ -15,7 +15,8 @@ async function main() {
   for (let i = 0; i < products.length; i++){
     document.getElementById(`bild${i}`).src = products[i].image;
     document.getElementById(`title${i}`).innerHTML = products[i].title;
-    document.getElementById(`desc${i}`).innerHTML = products[i].description; 
+    document.getElementById(`desc${i}`).innerHTML = products[i].description;
+    document.getElementById(`price${i}`).innerHTML = € + products[i].price;
   }
 
 }
