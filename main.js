@@ -45,3 +45,9 @@ function scrollToBottom(){
 
   window.scrollTo(0, scrollHeight);
 }
+
+function scrollToProduct(){
+  const scrollHeight = document.body.scrollHeight;
+
+  window.scrollTo()
+}
