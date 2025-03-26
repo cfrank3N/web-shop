@@ -50,5 +50,5 @@ function populateProductPopUp(productNumber){
   document.getElementById('modal-img').src = products[productNumber].image;
   document.getElementById('modal-title').innerHTML = products[productNumber].title;
   document.getElementById('modal-desc').innerHTML = products[productNumber].description; 
-  document.getElementById('modal-price').innerHTML = products[productNumber].price; 
+  document.getElementById('modal-price').innerHTML = `€${products[productNumber].price}`; 
 }
