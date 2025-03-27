@@ -5,12 +5,17 @@
   const regexEmail = new RegExp(/^(?!.{50})[A-Za-zåäöÅÄÖ\.-_0-9]+@[A_Za-zåäöÅÄÖ\.-_0-9]+\.[a-z]{2,}$/); //Done
   const regexStreet = new RegExp(/^(?!.{50})[A-Za-zåäöÅÄÖ\s0-9]{2,}$/); //Done
   const regexZipCode = new RegExp(/^[0-9]{5}|[0-9]{3}\s[0-9]{2}$/); //Done
-  const regexCity = new RegExp(/^(?!.{50})[A-Za-zåäöÅÄÖ\s]{2,}$/); //Done
+  const regexCity = new RegExp(/^[A-Za-zåäöÅÄÖ\s]{2,50}$/); //Done
 
   const validations = [regexName, regexPhone, regexEmail, regexStreet, regexZipCode, regexCity];
 
 //Adds eventlistener to form to perform validation
-document.getElementById("myForm").addEventListener("submit", validateFields);
+document.addEventListener("DOMContentLoaded", () => {
+  let form = document.getElementById("myForm");
+  if (form != null) {
+    form.addEventListener("submit", validateFields);
+  }
+});
 
 //Validation function for the form
 function validateFields(e) {
@@ -50,6 +55,15 @@ function validateFields(e) {
 
       //Adds invalid to the input
       values[i].classList.add("is-invalid");
+    }
+
+    let validInputs = 0;
+
+    values.forEach(value => value.classList.contains("is-valid") ? validInputs ++ : validInputs -= 1 );
+
+    if (validInputs === values.length) {
+      let success = new bootstrap.Modal(document.getElementById("paymentAccepted"));
+      success.show();
     }
   }
 }
