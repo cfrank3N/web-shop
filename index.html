@@ -1,571 +1,320 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Arvids Sandbox</title>
-    <link rel="stylesheet" href="bootstrap.css" />
-  </head>
 
-  <body>
-    <style>
-      .nav-icon {
-        position: relative;
-        top: -2px; 
-      }
-    </style>
-    
-    <nav class="navbar navbar-expand-sm navbar-light">
-      <div class="container">
-        <a href="#" class="navbar-brand mb-0 h1">
-          <img
-            class="d-inline-block align-top" 
-            src="./img/nav/andreas.png" 
-            width="30"
-            height="30" 
-            alt="Logo"
-          />
-          Name
-        </a>
-        <button
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          class="navbar-toggler"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto d-flex align-items-center">
-            <li class="nav-item">
-              <a href="#" class="nav-link active">Home</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link" onclick="popupFn()">About</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link"  onclick="scrollToBottom()">Contact</a>
-            </li>
-            <li class="nav-item d-flex align-items-center">
-              <a class="nav-link" href="#">
-                <img class="nav-icon" src="./img/nav/search.png" alt="Search Icon" height="15" draggable="false" />
-              </a>
-            </li>
-            <li class="nav-item d-flex align-items-center">
-              <a class="nav-link" href="#">
-                <img class="nav-icon" src="./img/nav/account.png" alt="Account Icon" height="15" draggable="false" />
-              </a>
-            </li>
-            <li class="nav-item d-flex align-items-center">
-              <a class="nav-link" href="#">
-                <img class="nav-icon" src="./img/nav/shopping-cart.png" alt="Shopping Cart Icon" height="15" draggable="false" />
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    
-    
-      <div class="container">
-        <hr>
-      </div>
-
-
-      <style>
-        .container-custom {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: space-between; 
-            padding: 0;
-        }
-        .text-content h1 {
-            font-size: 5rem;
-            font-weight: bold;
-        }
-        .text-content p {
-            font-size: 1.1rem;
-            color: #555;
-        }
-        .btn-custom {
-            background-color: #ff5722;
-            border: none;
-            padding: 10px 20px;
-            color: white;
-            border-radius: 30px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-        }
-        .btn-custom:hover {
-            background-color: #e64a19;
-        }
-        .image-container img {
-            width: 100%;
-            border-top-right-radius: 30px;
-            border-bottom-left-radius: 30px;
-        } 
-        .row {
-            margin: 0; 
-            width: 100%; 
-        }
-        .col-md-6 {
-            padding: 0; 
-        }
-        .text-content {
-            flex: 1; 
-            
-        }
-        .image-container {
-            flex: 0 1 auto;
-        }
-        @media (max-width: 767px) {
-        .container-custom {
-            flex-direction: column; 
-            text-align: center; 
-        }
-        .text-content h1 {
-            font-size: 3rem; 
-        }
-        .text-content p {
-            font-size: 1rem; 
-        }
-        .btn-custom {
-            width: 100%; 
-        }
-        .image-container img {
-            width: 80%; 
-            margin-top: 20px;
-        }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arvids Sandbox</title>
+  <link rel="stylesheet" href="bootstrap.css" />
+  <style>
+    .nav-icon {
+      position: relative;
+      top: -2px;
     }
-    </style>
+
+    .scale-on-hover {
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .scale-on-hover:hover {
+      transform: scale(1.05);
+    }
+
+    .container-custom {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0;
+    }
+
+    .text-content h1 {
+      font-size: 5rem;
+      font-weight: bold;
+    }
+
+    .text-content p {
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    .btn-custom {
+      background-color: #EB5E28;
+      ;
+      border: none;
+      padding: 5px 18px;
+      color: white;
+      border-radius: 30px;
+
+    }
+
+    .btn-custom:hover {
+      background-color: #e64a19;
+    }
+
+    .image-container img {
+      width: 100%;
+      border-top-right-radius: 30px;
+      border-bottom-left-radius: 30px;
+    }
+
+    .row {
+      margin: 0;
+      width: 100%;
+    }
+
+    .col-md-6 {
+      padding: 0;
+    }
+
+    .text-content {
+      flex: 1;
+    }
+
+    .image-container {
+      flex: 0 1 auto;
+    }
+
+    .productImage {
+      display: block;
+      margin: 0 auto 1rem auto;
+      height: 200px;
+      width: 200px;
+      object-fit: contain;
+    }
+
+    .product-text-container {
+      margin-top: 2rem;
+      width: 100%;
+      padding: 1rem;
+      max-height: 180px;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    }
+
+    .product-title {
+      font-size: 1rem;
+      font-weight: bold;
+      line-height: 1.25;
+      margin-bottom: 1rem;
+      height: 60px;
+      overflow: hidden;
+    }
+
+    .product-desc {
+      position: relative;
+      height: 30px;
+      overflow: hidden;
+      min-height: 4rem;
+      margin-bottom: 0;
+      font-size: 0.9rem;
+      -webkit-mask-image: -webkit-linear-gradient(180deg, black 70%, transparent 100%);
+      mask-image: linear-gradient(180deg, black 70%, transparent 100%);
+
+    }
+
+    .price-buy-container {
+      margin: 1rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .price-text {
+      font-weight: bold;
+      margin-right: 1px;
+      font-size: 18px;
+      color: #131313;
+    }
+
+    @media (max-width: 767px) {
+      .container-custom {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .text-content h1 {
+        font-size: 3rem;
+      }
+
+      .text-content p {
+        font-size: 1rem;
+      }
+
+      .btn-custom {
+        width: 100%;
+      }
+
+      .image-container img {
+        width: 80%;
+        margin-top: 20px;
+      }
+
+      #popupDialog {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+      }
+
+      #overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-sm navbar-light">
     <div class="container">
+      <a href="#" class="navbar-brand mb-0 h1">
+        <img class="d-inline-block align-top" src="./img/nav/andreas.png" width="30" height="30" alt="Logo" />
+        Name
+      </a>
+      <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" class="navbar-toggler"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto d-flex align-items-center">
+          <li class="nav-item">
+            <a href="#" class="nav-link active">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#aboutModal">About</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link" onclick="scrollToBottom()">Contact</a>
+          </li>
+          <li class="nav-item d-flex align-items-center">
+            <a class="nav-link" href="#">
+              <img class="nav-icon" src="./img/nav/search.png" alt="Search Icon" height="15" draggable="false" />
+            </a>
+          </li>
+          <li class="nav-item d-flex align-items-center">
+            <a class="nav-link" href="#">
+              <img class="nav-icon" src="./img/nav/account.png" alt="Account Icon" height="15" draggable="false" />
+            </a>
+          </li>
+          <li class="nav-item d-flex align-items-center">
+            <a class="nav-link" href="#">
+              <img class="nav-icon" src="./img/nav/shopping-cart.png" alt="Shopping Cart Icon" height="15"
+                draggable="false" />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="container">
+    <hr>
+  </div>
+
+  <div class="container">
     <div class="container container-custom">
-        <div class="row align-items-center w-100">
-            <div class="col-md-6 text-content">
-                <h1>Discover and find your own fashion.</h1>
-                <p>Explore our curated collection of stylish clothing and accessories tailored to your unique taste.</p>
-                <button class="btn btn-custom">EXPLORE NOW</button>
-            </div>
-            <div class="col-md-6">
-                <div class="image-container">
-                    <img src="./img/nav/bioglow.png" alt="Fashion Products" class="img-fluid">
-                </div>
-            </div>
+      <div class="row align-items-center w-100">
+        <div class="col-md-6 text-content">
+          <h1>Discover and find your own fashion.</h1>
+          <p>Explore our curated collection of stylish clothing and accessories tailored to your unique taste.</p>
+          <button class="btn btn-custom">EXPLORE NOW</button>
         </div>
+        <div class="col-md-6">
+          <div class="image-container">
+            <img src="./img/nav/bioglow.png" alt="Fashion Products" class="img-fluid">
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-    
 
-    <div class="container">
-      <hr>
-    </div>
-    <div class="container text-center">
-      <h1>All Products</h1>
-    </div>
-    <div class="container mt-5">
-      <div class="row">
-        <div class="col-sm-6 col-lg-3 my-3">
-          <div class="card shadow h-100">
-            <div class="card-body">
-              <img
-                id="bild0"
-                src=""
-                class="card-img-top img-fluid w-100 object-fit-contain"
-                style="max-height: 15rem"
-              />
-              <h5 id="title0" class="card-title mt-4"></h5>
-              <p id="desc0" class="card-text text-truncate"></p>
-            </div>
-            <div class="mb-3 me-3 ms-auto">
-              <button type="button" class="btn btn-primary">Buy</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-3 my-3">
-          <div class="card shadow h-100">
-            <div class="card-body">
-              <img
-                id="bild1"
-                src=""
-                class="card-img-top img-fluid w-100 object-fit-contain"
-                style="max-height: 15rem"
-              />
-              <h5 id="title1" class="card-title mt-4"></h5>
-              <p id="desc1" class="card-text text-truncate text-truncate"></p>
-            </div>
-            <div class="mb-3 me-3 ms-auto">
-              <button type="button" class="btn btn-primary">Buy</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-3 my-3">
-          <div class="card shadow h-100">
-            <div class="card-body">
-              <img
-                id="bild2"
-                src=""
-                class="card-img-top img-fluid w-100 object-fit-contain"
-                style="max-height: 15rem"
-              />
-              <h5 id="title2" class="card-title mt-4"></h5>
-              <p id="desc2" class="card-text text-truncate"></p>
-            </div>
-            <div class="mb-3 me-3 ms-auto">
-              <button type="button" class="btn btn-primary">Buy</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-3 my-3">
-          <div class="card shadow h-100">
-            <div class="card-body">
-              <img
-                id="bild3"
-                src=""
-                class="card-img-top img-fluid w-100 object-fit-contain"
-                style="max-height: 15rem"
-              />
-              <h5 id="title3" class="card-title mt-4"></h5>
-              <p id="desc3" class="card-text text-truncate"></p>
-            </div>
-            <div class="mb-3 me-3 ms-auto">
-              <button type="button" class="btn btn-primary">Buy</button>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="col-sm-6 col-lg-3 my-3">
-          <div class="card shadow h-100">
-            <div class="card-body">
-              <img
-                id="bild4"
-                src=""
-                class="card-img-top img-fluid w-100 object-fit-contain"
-                style="max-height: 15rem"
-              />
-              <h5 id="title4" class="card-title mt-4"></h5>
-              <p id="desc4" class="card-text text-truncate"></p>
-            </div>
-            <div class="mb-3 me-3 ms-auto">
-              <button type="button" class="btn btn-primary">Buy</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-3 my-3">
-          <div class="card shadow h-100">
-            <div class="card-body">
-              <img
-                id="bild5"
-                src=""
-                class="card-img-top img-fluid w-100 object-fit-contain"
-                style="max-height: 15rem"
-              />
-              <h5 id="title5" class="card-title mt-4"></h5>
-              <p id="desc5" class="card-text text-truncate"></p>
-            </div>
-            <div class="mb-3 me-3 ms-auto">
-              <button type="button" class="btn btn-primary">Buy</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-3 my-3">
-          <div class="card shadow h-100">
-            <div class="card-body">
-              <img
-                id="bild6"
-                src=""
-                class="card-img-top img-fluid w-100 object-fit-contain"
-                style="max-height: 15rem"
-              />
-              <h5 id="title6" class="card-title mt-4"></h5>
-              <p id="desc6" class="card-text text-truncate"></p>
-            </div>
-            <div class="mb-3 me-3 ms-auto">
-              <button type="button" class="btn btn-primary">Buy</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-3 my-3">
-          <div class="card shadow h-100">
-            <div class="card-body">
-              <img
-                id="bild7"
-                src=""
-                class="card-img-top img-fluid w-100 object-fit-contain"
-                style="max-height: 15rem"
-              />
-              <h5 id="title7" class="card-title mt-4"></h5>
-              <p id="desc7" class="card-text text-truncate"></p>
-            </div>
-            <div class="mb-3 me-3 ms-auto">
-              <button type="button" class="btn btn-primary">Buy</button>
-            </div>
-          </div>
-        </div>
-      </div>
+  <div class="container">
+    <hr>
+  </div>
+  <div class="container text-center">
+    <h1>All Products</h1>
+  </div>
+  <div class="container mt-5" id="prod-container">
+    <!-- Product cards from JS go here -->
+  </div>
 
-      <div class="row">
-        <div class="col-sm-6 col-lg-3 my-3">
-          <div class="card shadow h-100">
-            <div class="card-body">
-              <img
-                id="bild8"
-                src=""
-                class="card-img-top img-fluid w-100 object-fit-contain"
-                style="max-height: 15rem"
-              />
-              <h5 id="title8" class="card-title mt-4"></h5>
-              <p id="desc8" class="card-text text-truncate"></p>
-            </div>
-            <div class="mb-3 me-3 ms-auto">
-              <button type="button" class="btn btn-primary">Buy</button>
-            </div>
-          </div>
+  <!-- Product Pop-up -->
+  <div class="modal fade rounded-5" id="productModal" tabindex="-1" aria-labelledby="productModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <button type="button" class="btn-close float-end" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="col-sm-6 col-lg-3 my-3">
-          <div class="card shadow h-100">
-            <div class="card-body">
-              <img
-                id="bild9"
-                src=""
-                class="card-img-top img-fluid w-100 object-fit-contain"
-                style="max-height: 15rem"
-              />
-              <h5 id="title9" class="card-title mt-4"></h5>
-              <p id="desc9" class="card-text text-truncate"></p>
+        <div class="modal-body mb-5 mx-4">
+          <div class="row gx-5">
+            <div class="col-md-4 my-auto">
+              <img src="" id="modal-img" class="img-fluid rounded translateY(-50%)" alt="Product image">
             </div>
-            <div class="mb-3 me-3 ms-auto">
-              <button type="button" class="btn btn-primary">Buy</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-3 my-3">
-          <div class="card shadow h-100">
-            <div class="card-body">
-              <img
-                id="bild10"
-                src=""
-                class="card-img-top img-fluid w-100 object-fit-contain"
-                style="max-height: 15rem"
-              />
-              <h5 id="title10" class="card-title mt-4"></h5>
-              <p id="desc10" class="card-text text-truncate"></p>
-            </div>
-            <div class="mb-3 me-3 ms-auto">
-              <button type="button" class="btn btn-primary">Buy</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-3 my-3">
-          <div class="card shadow h-100">
-            <div class="card-body">
-              <img
-                id="bild11"
-                src=""
-                class="card-img-top img-fluid w-100 object-fit-contain"
-                style="max-height: 15rem"
-              />
-              <h5 id="title11" class="card-title mt-4"></h5>
-              <p id="desc11" class="card-text text-truncate"></p>
-            </div>
-            <div class="mb-3 me-3 ms-auto">
-              <button type="button" class="btn btn-primary">Buy</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-sm-6 col-lg-3 my-3">
-          <div class="card shadow h-100">
-            <div class="card-body">
-              <img
-                id="bild12"
-                src=""
-                class="card-img-top img-fluid w-100 object-fit-contain"
-                style="max-height: 15rem"
-              />
-              <h5 id="title12" class="card-title mt-4"></h5>
-              <p id="desc12" class="card-text text-truncate"></p>
-            </div>
-            <div class="mb-3 me-3 ms-auto">
-              <button type="button" class="btn btn-primary">Buy</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-3 my-3">
-          <div class="card shadow h-100">
-            <div class="card-body">
-              <img
-                id="bild13"
-                src=""
-                class="card-img-top img-fluid w-100 object-fit-contain"
-                style="max-height: 15rem"
-              />
-              <h5 id="title13" class="card-title mt-4"></h5>
-              <p id="desc13" class="card-text text-truncate"></p>
-            </div>
-            <div class="mb-3 me-3 ms-auto">
-              <button type="button" class="btn btn-primary">Buy</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-3 my-3">
-          <div class="card shadow h-100">
-            <div class="card-body">
-              <img
-                id="bild14"
-                src=""
-                class="card-img-top img-fluid w-100 object-fit-contain"
-                style="max-height: 15rem"
-              />
-              <h5 id="title14" class="card-title mt-4"></h5>
-              <p id="desc14" class="card-text text-truncate"></p>
-            </div>
-            <div class="mb-3 me-3 ms-auto">
-              <button type="button" class="btn btn-primary">Buy</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-3 my-3">
-          <div class="card shadow h-100">
-            <div class="card-body">
-              <img
-                id="bild15"
-                src=""
-                class="card-img-top img-fluid w-100 object-fit-contain"
-                style="max-height: 15rem"
-              />
-              <h5 id="title15" class="card-title mt-4"></h5>
-              <p id="desc15" class="card-text text-truncate"></p>
-            </div>
-            <div class="mb-3 me-3 ms-auto">
-              <button type="button" class="btn btn-primary">Buy</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-sm-6 col-lg-3 my-3">
-          <div class="card shadow h-100">
-            <div class="card-body">
-              <img
-                id="bild16"
-                src=""
-                class="card-img-top img-fluid w-100 object-fit-contain"
-                style="max-height: 15rem"
-              />
-              <h5 id="title16" class="card-title mt-4"></h5>
-              <p id="desc16" class="card-text text-truncate"></p>
-            </div>
-            <div class="mb-3 me-3 ms-auto">
-              <button type="button" class="btn btn-primary">Buy</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-3 my-3">
-          <div class="card shadow h-100">
-            <div class="card-body">
-              <img
-                id="bild17"
-                src=""
-                class="card-img-top img-fluid w-100 object-fit-contain"
-                style="max-height: 15rem"
-              />
-              <h5 id="title17" class="card-title mt-4"></h5>
-              <p id="desc17" class="card-text text-truncate"></p>
-            </div>
-            <div class="mb-3 me-3 ms-auto">
-              <button type="button" class="btn btn-primary">Buy</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-3 my-3">
-          <div class="card shadow h-100">
-            <div class="card-body">
-              <img
-                id="bild18"
-                src=""
-                class="card-img-top img-fluid w-100 object-fit-contain"
-                style="max-height: 15rem"
-              />
-              <h5 id="title18" class="card-title mt-4"></h5>
-              <p id="desc18" class="card-text text-truncate"></p>
-            </div>
-            <div class="mb-3 me-3 ms-auto">
-              <button type="button" class="btn btn-primary">Buy</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-3 my-3">
-          <div class="card shadow h-100">
-            <div class="card-body">
-              <img
-                id="bild19"
-                src=""
-                class="card-img-top img-fluid w-100 object-fit-contain"
-                style="max-height: 15rem"
-              />
-              <h5 id="title19" class="card-title mt-4"></h5>
-              <p id="desc19" class="card-text text-truncate"></p>
-            </div>
-            <div class="mb-3 me-3 ms-auto">
-              <button type="button" class="btn btn-primary">Buy</button>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h4 class="modal-title" id="modal-title">Modal title</h4>
+                <h5 id="modal-price" class="fw-bold my-3" style="color:#ff5722;"></h5>
+                <p class="card-text" id="modal-desc"></p>
+                <button type="button" class="btn btn-custom mt-3">Buy</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
+  <!-- About Pop-up -->
+  <div class="modal fade rounded-5" id="aboutModal" tabindex="-1" aria-labelledby="About Us Modal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <button type="button" class="btn-close float-end" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body mx-4">
 
-    <style>
-            #popupDialog {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            padding: 20px;
-            background-color: #fff;
-            border: 1px solid #ccc;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-        }
-
-        #overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-        }
-    </style>
-
-    <div id="overlay"></div>
-    <div id="popupDialog">
-        <p>Welcome to our test webshop! <br><br>
-
-          We are five students from Nackademin, working together to develop and refine our skills in web development and e-commerce. This project is part of our learning journey, where we experiment with different technologies, design principles, and functionalities to create a fully functional online store.
-          <br>
-          Our goal is to build a user-friendly and efficient webshop while gaining hands-on experience in coding, UX/UI design, and business logic. This is a test project, so while things may change and evolve, we appreciate any feedback as we continue to improve.
-          <br><br>
-          Thanks for checking out our site!
-          
+          <h1>Welcome to our test webshop!</h1> <br>
+          <p>
+            We are five students from Nackademin, working together to develop and refine our skills in web development
+            and
+            e-commerce. This project is part of our learning journey, where we experiment with different technologies,
+            design principles, and functionalities to create a fully functional online store.
+            <br>
+            Our goal is to build a user-friendly and efficient webshop while gaining hands-on experience in coding,
+            UX/UI
+            design, and business logic. This is a test project, so while things may change and evolve, we appreciate any
+            feedback as we continue to improve.
+            <br><br>
+            Thanks for checking out our site!
+            <br>
           </p>
-        <button onclick="closeFn()">
-            Close
-        </button>
-    </div>
+          <div class="mb-4 mt-4"><button class="btn-custom" data-bs-dismiss="modal" aria-label="Close">Close</button>
+          </div>
+        </div>
 
-    <script src="main.js"></script>
-    <script src="bootstrap.js"></script>
-  </body>
+      </div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+  <script src="bootstrap.js"></script>
+</body>
+
 </html>
