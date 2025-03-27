@@ -126,7 +126,7 @@
     <div class="container">
       <h3 class="my-3 fw-bold">Checkout</h3>
       <div class="col-sm-7">
-        <form class="form" id="form">
+        <form class="form" id="myForm" novalidate>
           <div class="mb-3">
             <label for="name" class="form-label fs-6">Full Name</label>
             <input
@@ -134,6 +134,7 @@
               class="form-control text-bg-custom shadow-sm rounded-pill border-0"
               id="name"
               placeholder="Caroline Hägglund"
+              required
             />
           </div>
           <div class="mb-3">
@@ -142,7 +143,7 @@
               type="text"
               class="form-control text-bg-custom shadow-sm rounded-pill border-0"
               id="phone"
-              placeholder="(+46) 73 123 10 10"
+              placeholder="(46) 73-123-10-10"
             />
           </div>
           <div class="mb-3">
@@ -164,11 +165,11 @@
             />
           </div>
           <div class="mb-3">
-            <label for="zip-code" class="form-label fs-6">Zip code</label>
+            <label for="zipCode" class="form-label fs-6">Zip code</label>
             <input
               type="text"
               class="form-control text-bg-custom shadow-sm rounded-pill border-0"
-              id="zip-code"
+              id="zipCode"
               placeholder="126 34"
             />
           </div>
