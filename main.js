@@ -1,13 +1,13 @@
 //Validation for the form
-  //Valid expressions for each field
-  const regexName = new RegExp(/^(?!.{50})[A-Za-zåäöÅÄÖ\s]+\s[A-Za-zåäöÅÄÖ\s]+$/); //Done
-  const regexPhone = new RegExp(/^[0-9\-\(\)\s]{4,50}$/); //Done
-  const regexEmail = new RegExp(/^(?!.{50})[A-Za-zåäöÅÄÖ\.-_0-9]+@[A_Za-zåäöÅÄÖ\.-_0-9]+\.[a-z]{2,}$/); //Done
-  const regexStreet = new RegExp(/^(?!.{50})[A-Za-zåäöÅÄÖ\s0-9]{2,}$/); //Done
-  const regexZipCode = new RegExp(/^[0-9]{5}|[0-9]{3}\s[0-9]{2}$/); //Done
-  const regexCity = new RegExp(/^[A-Za-zåäöÅÄÖ\s]{2,50}$/); //Done
+//Valid expressions for each field
+const regexName = new RegExp(/^(?!.{50})[A-Za-zåäöÅÄÖ\s]+\s[A-Za-zåäöÅÄÖ\s]+$/); //Done
+const regexPhone = new RegExp(/^[0-9\-\(\)\s]{4,50}$/); //Done
+const regexEmail = new RegExp(/^(?!.{50})[A-Za-zåäöÅÄÖ\.-_0-9]+@[A_Za-zåäöÅÄÖ\.-_0-9]+\.[a-z]{2,}$/); //Done
+const regexStreet = new RegExp(/^(?!.{50})[A-Za-zåäöÅÄÖ\s0-9]{2,}$/); //Done
+const regexZipCode = new RegExp(/^[0-9]{5}|[0-9]{3}\s[0-9]{2}$/); //Done
+const regexCity = new RegExp(/^[A-Za-zåäöÅÄÖ\s]{2,50}$/); //Done
 
-  const validations = [regexName, regexPhone, regexEmail, regexStreet, regexZipCode, regexCity];
+const validations = [regexName, regexPhone, regexEmail, regexStreet, regexZipCode, regexCity];
 
 //Adds eventlistener to form to perform validation
 document.addEventListener("DOMContentLoaded", () => {
@@ -68,6 +68,18 @@ function validateFields(e) {
   }
 }
 //End of validation script
+
+//Close modal and go back to homepage
+function closeModal() {
+  
+  let success = new bootstrap.Modal(document.getElementById("paymentAccepted"));
+  success.hide();
+  setTimeout(
+    () => window.location.href = "index.html",
+    400
+  )
+  
+}
 
 let products = [];
 
