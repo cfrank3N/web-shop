@@ -102,7 +102,7 @@ async function populateProducts() {
 
     output += `
         <div class="col-sm-6 col-lg-3 my-3">
-            <div class="card h-100 shadow scale-on-hover cursor-pointer rounded-5" role="button"">
+            <div class="card h-100 shadow scale-on-hover cursor-pointer rounded-5" role="button">
                 <div class="card-body" data-bs-toggle="modal" data-bs-target="#productModal" onclick="populateProductPopUp(${i})">
                     <!-- pics -->
                     <div class="position-relative" style="height: 15rem">
@@ -117,14 +117,16 @@ async function populateProducts() {
                 <!-- bottom section -->
                 <div class="price-buy-container">
                     <span class="price-text">€${products[i].price.toFixed(2)}</span>
-                    <div class="btn btn-custom">Buy</div>
+                    <a href="form.html?title=${encodeURIComponent(products[i].title)}&price=${products[i].price.toFixed(2)}&image=${encodeURIComponent(products[i].image)}" class="btn btn-custom">Buy</a> 
                 </div>
             </div>
         </div>`
   }
+
   output += `</div>`;
   document.getElementById('prod-container').innerHTML = output;
 }
+
 populateProducts();
 
 
@@ -139,9 +141,28 @@ function scrollToBottom(){
   window.scrollTo(0, scrollHeight);
 }
 
-function populateProductPopUp(productNumber){
-  document.getElementById('modal-img').src = products[productNumber].image;
-  document.getElementById('modal-title').innerHTML = products[productNumber].title;
-  document.getElementById('modal-desc').innerHTML = products[productNumber].description; 
-  document.getElementById('modal-price').innerHTML = `€${products[productNumber].price}`; 
+function populateProductPopUp(index){
+  document.getElementById('modal-title').textContent = products[index].title;
+  document.getElementById('modal-price').textContent = `€${products[index].price.toFixed(2)}`;
+  document.getElementById('modal-desc').textContent = products[index].description;
+  document.getElementById('modal-img').src = products[index].image;
+
+  const buyBtn = document.querySelector('#productModal .btn-custom');
+  buyBtn.href = `form.html?title=${encodeURIComponent(products[index].title)}&price=${products[index].price.toFixed(2)}&image=${encodeURIComponent(products[index].image)}`;
 }
+
+function getQueryParams() {
+  const params = new URLSearchParams(window.location.search);
+  return {
+    title: params.get('title') || 'Unknown Product',
+    price: params.get('price') || '0.00',
+    image: params.get('image') || 'img/nav/bioglow.png'
+  };
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  const product = getQueryParams();
+  document.getElementById('product-name').textContent = product.title;
+  document.getElementById('product-price').textContent = `€${product.price}`;
+  document.getElementById('product-img').src = product.image;
+});

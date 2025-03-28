@@ -235,11 +235,11 @@
               <img src="" id="modal-img" class="img-fluid rounded translateY(-50%)" alt="Product image">
             </div>
             <div class="col-md-8">
-              <div class="card-body">
+              <div class="card-body" data-bs-toggle="modal" data-bs-target="#productModal" onclick="populateProductPopUp($,{i})">
                 <h4 class="modal-title" id="modal-title">Modal title</h4>
                 <h5 id="modal-price" class="fw-bold my-3" style="color:#ff5722;"></h5>
                 <p class="card-text" id="modal-desc"></p>
-                <button type="button" class="btn btn-custom mt-3">Buy</button>
+                <a href="form.html?title=${encodeURIComponent(products[i].title)}&price=${products[i].price.toFixed(2)}&image=${encodeURIComponent(products[i].image)}" class="btn btn-custom">Buy</a> 
               </div>
             </div>
           </div>
