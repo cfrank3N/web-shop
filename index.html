@@ -7,11 +7,6 @@
   <title>Arvids Sandbox</title>
   <link rel="stylesheet" href="bootstrap.css" type="text/css">
   <style>
-    .nav-icon {
-      position: relative;
-      top: -2px;
-    }
-
     .scale-on-hover {
       transition: transform 0.3s ease-in-out;
     }
@@ -45,7 +40,6 @@
       padding: 5px 18px;
       color: white;
       border-radius: 30px;
-
     }
 
     .btn-custom:hover {
@@ -66,50 +60,13 @@
       flex: 0 1 auto;
     }
 
-    .product-text-container {
-      margin-top: 2rem;
-      width: 100%;
-      padding: 1rem;
-      max-height: 180px;
-      overflow: hidden;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-    }
-
     .product-title {
       font-size: 1rem;
       font-weight: bold;
       line-height: 1.25;
-      margin-bottom: 1rem;
+      
       height: 60px;
       overflow: hidden;
-    }
-
-    .product-desc {
-      position: relative;
-      height: 30px;
-      overflow: hidden;
-      min-height: 4rem;
-      margin-bottom: 0;
-      font-size: 0.9rem;
-      -webkit-mask-image: -webkit-linear-gradient(180deg, black 70%, transparent 100%);
-      mask-image: linear-gradient(180deg, black 70%, transparent 100%);
-
-    }
-
-    .price-buy-container {
-      margin: 1rem 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .price-text {
-      font-weight: bold;
-      margin-right: 1px;
-      font-size: 18px;
-      color: #131313;
     }
 
     @media (max-width: 767px) {
@@ -133,7 +90,7 @@
     }
 
     .text-orange {
-        color: #EB5E28 !important;
+        color: #EB5E28;
     }
   </style>
 </head>
@@ -212,10 +169,10 @@
   <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content rounded-5">
-        <div class="modal-header border-0">
+        <div class="modal-header border-0 mb-0">
           <button type="button" class="btn-close float-end mt-2 me-2" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body mb-5 mx-4">
+        <div class="modal-body mt-0 mb-5 mx-4">
           <div class="row gx-5">
             <div class="col-md-4 my-auto">
               <img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" id="modal-img" class="img-fluid rounded translateY(-50%)" alt="Product image">
