@@ -22,7 +22,9 @@
       }
     </style>
     <!--Nav-bar-->
-    <nav class="navbar navbar-expand-sm navbar-light">
+    <nav
+      class="navbar sticky-top navbar-expand-sm navbar-light bg-white shadow-sm"
+    >
       <div class="container">
         <a href="#" class="navbar-brand mb-0 h1">
           <img
@@ -51,7 +53,13 @@
               <a href="#" class="nav-link active">Home</a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link" onclick="popupFn()">About</a>
+              <a
+                href="#"
+                class="nav-link"
+                data-bs-toggle="modal"
+                data-bs-target="#aboutModal"
+                >About</a
+              >
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link" onclick="scrollToBottom()"
@@ -95,9 +103,6 @@
         </div>
       </div>
     </nav>
-    <div class="container">
-      <hr />
-    </div>
     <!--End of Nav-bar-->
     <!--Start of card layout-->
     <div class="container">
