@@ -6,6 +6,7 @@ Developed by:
 - [Samuel](https://github.com/MakuMoon) 
 - [Andreas](https://github.com/Gaurgle) 
 - [Arvid](https://github.com/ArvidUtas) 
+
 at Nackademin 2025.
 
 This is a project for the course in Frontend by Mahmud Al Hakim.
