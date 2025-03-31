@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -181,11 +180,11 @@
                 class="img-fluid rounded translateY(-50%)" alt="Product image">
             </div>
             <div class="col-md-8">
-              <div class="card-body">
+              <div class="card-body" data-bs-toggle="modal" data-bs-target="#productModal" onclick="populateProductPopUp($,{i})">
                 <h4 class="modal-title" id="modal-title">Modal title</h4>
                 <h5 id="modal-price" class="fw-bold my-3 text-orange">&nbsp;</h5>
                 <p class="card-text" id="modal-desc"></p>
-                <button type="button" class="btn btn-custom mt-3 px-4 py-2 rounded-5">Buy</button>
+                <a href="form.html?title=${encodeURIComponent(products[i].title)}&price=${products[i].price.toFixed(2)}&image=${encodeURIComponent(products[i].image)}" class="btn btn-custom mt-3 px-4 py-2 rounded-5">Buy</a> 
               </div>
             </div>
           </div>
@@ -254,8 +253,8 @@
     </div>
   </footer>
 
+
   <script src="main.js"></script>
   <script src="bootstrap.js"></script>
 </body>
-
 </html>
