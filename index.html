@@ -128,13 +128,13 @@
             <a class="nav-link" href="#">
               <img class="nav-icon" src="./img/nav/account.png" alt="Account Icon" height="15" draggable="false">
             </a>
-          </li>
+          </li> -->
           <li class="nav-item d-flex align-items-center">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="form.html">
               <img class="nav-icon" src="./img/nav/shopping-cart.png" alt="Shopping Cart Icon" height="15"
                 draggable="false">
             </a>
-          </li> -->
+          </li>
         </ul>
       </div>
     </div>
@@ -180,11 +180,11 @@
                 class="img-fluid rounded translateY(-50%)" alt="Product image">
             </div>
             <div class="col-md-8">
-              <div class="card-body" data-bs-toggle="modal" data-bs-target="#productModal" onclick="populateProductPopUp($,{i})">
+              <div class="card-body">
                 <h4 class="modal-title" id="modal-title">Modal title</h4>
                 <h5 id="modal-price" class="fw-bold my-3 text-orange">&nbsp;</h5>
                 <p class="card-text" id="modal-desc"></p>
-                <a href="form.html?title=${encodeURIComponent(products[i].title)}&price=${products[i].price.toFixed(2)}&image=${encodeURIComponent(products[i].image)}" class="btn btn-custom mt-3 px-4 py-2 rounded-5">Buy</a> 
+                <span id="buy-button"><button class="btn btn-custom px-4 py-2 rounded-5">Add to cart</button></span>
               </div>
             </div>
           </div>
@@ -224,7 +224,7 @@
       </div>
     </div>
   </div>
-
+<!-- FOOTER -->
   <footer class="bg-light text-center py-4 mt-5">
     <div class="container">
       <div class="row justify-content-center">

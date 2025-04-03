@@ -71,22 +71,22 @@ function validateFields(e) {
 
 //Close modal and go back to homepage
 function closeModal() {
-  
   let success = new bootstrap.Modal(document.getElementById("paymentAccepted"));
   success.hide();
   setTimeout(
     () => window.location.href = "index.html",
     400
   )
-  
 }
 
+//Fetch products and populate index.html
 let products = [];
-
 async function fetchProducts() {
   try {
     const response = await fetch('https://fakestoreapi.com/products');
     products = await response.json();
+    console.log(products);
+    
   } catch (error) {
     console.error("Error fetching products:", error);
   }
@@ -115,7 +115,7 @@ async function populateProducts() {
                 <!-- bottom section -->
                 <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
                     <span class="price-text">€${products[i].price.toFixed(2)}</span>
-                    <a href="form.html?title=${encodeURIComponent(products[i].title)}&price=${products[i].price.toFixed(2)}&image=${encodeURIComponent(products[i].image)}" class="btn btn-custom px-4 py-2 rounded-5">Buy</a> 
+                    <button class="btn btn-custom px-4 py-2 rounded-5" onclick="addToCart(${i})">Buy</button>
                 </div>
             </div>
         </div>`
@@ -123,6 +123,21 @@ async function populateProducts() {
 
   output += `</div>`;
   document.getElementById('prod-container').innerHTML = output;
+}
+// END fetch products
+
+//Add to cart
+function addToCart(index){
+  console.log("funkar" + products[index]);
+  let cart = [];
+  if (localStorage.getItem("cart") === null){
+    cart.push(products[index])
+  } else {
+    cart = JSON.parse(localStorage.getItem("cart"))
+    cart.push(products[index])
+  }
+  console.log(cart);
+  localStorage.setItem("cart", JSON.stringify(cart)); 
 }
 
 function getFirstFiveWords(text) {
@@ -141,23 +156,9 @@ function populateProductPopUp(index){
   document.getElementById('modal-price').textContent = `€${products[index].price.toFixed(2)}`;
   document.getElementById('modal-desc').textContent = products[index].description;
   document.getElementById('modal-img').src = products[index].image;
+  document.getElementById('buy-button').innerHTML = `<button class="btn btn-custom px-4 py-2 rounded-5" onclick="addToCart(${index})">Add to cart</button>`;
 
-  const buyBtn = document.querySelector('#productModal .btn-custom');
-  buyBtn.href = `form.html?title=${encodeURIComponent(products[index].title)}&price=${products[index].price.toFixed(2)}&image=${encodeURIComponent(products[index].image)}`;
+  //const buyBtn = document.querySelector('#productModal .btn-custom');
+  //buyBtn.href = `form.html?title=${encodeURIComponent(products[index].title)}&price=${products[index].price.toFixed(2)}&image=${encodeURIComponent(products[index].image)}`;
 }
 
-function getQueryParams() {
-  const params = new URLSearchParams(window.location.search);
-  return {
-    title: params.get('title') || 'Unknown Product',
-    price: params.get('price') || '0.00',
-    image: params.get('image') || 'img/nav/bioglow.png'
-  };
-}
-
-document.addEventListener("DOMContentLoaded", function() {
-  const product = getQueryParams();
-  document.getElementById('product-name').textContent = product.title;
-  document.getElementById('product-price').textContent = `€${product.price}`;
-  document.getElementById('product-img').src = product.image;
-});
