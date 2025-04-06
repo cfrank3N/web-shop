@@ -1,3 +1,107 @@
+//Populate form.html with content of Cart
+function loadCart(){
+  let cartOutput = ``;
+  let cart = [];
+  if (localStorage.getItem("cart") === null){
+    cartOutput = `<h4 class="ms-5">Your cart is empty</h4>`
+  } else {
+    cart = JSON.parse(localStorage.getItem("cart"))
+    for (let i in cart){
+      if (i == 0){
+        cartOutput += `
+      <div class="row my-3">
+        <div class="col-sm-9">
+          <div class="card p-3 border-0 rounded-5 shadow-sm">
+            <div class="row g-0 align-items-center">
+              <div class="col-md-2">
+                <img src="${cart[i].image}" class="img-fluid rounded-4 cart-image-custom" alt="${cart[i].title}">
+              </div>
+              <div class="col-md-6">
+                <div class="card-body ms-3">
+                  <h5 class="text-muted mb-1">${cart[i].title}</h5>
+                  <h4 class="fw-bold">Price €${cart[i].price}</h3>
+                </div>
+              </div>
+              <div class="col-md-4 d-flex flex-column justify-content-between align-items-end">
+                <div class="mb-auto"><p><i type="button" class="bi bi-trash3-fill text-danger fs-4" onclick="removeItem(${i})"></i></p><br>  </div>
+                <div class="btn-group align-self-end" role="group" aria-label="Change amount">
+                  <button type="button" class="btn rounded-start-4 text-bg-custom">-</button>
+                  <div id="qty${i}" class="btn btn-nobtn text-bg-custom">1</div>
+                  <button type="button" class="btn rounded-end-4 text-bg-custom">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="card p-4 border-0 rounded-5 shadow-sm">
+            <h3>Order summary</h3>
+            <div class="row mt-3">
+              <div class="col-6"><p>Total</p></div>
+              <div class="col-6"><p id="total-price" class="fw-bold text-end">€${calculateTotal()}</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      `
+      } else {
+      cartOutput += `
+      <div class="row my-3">
+        <div class="col-sm-9">
+          <div class="card p-3 border-0 rounded-5 shadow-sm">
+            <div class="row g-0 align-items-center">
+              <div class="col-md-2">
+                <img src="${cart[i].image}" class="img-fluid rounded-4 cart-image-custom" alt="${cart[i].title}">
+              </div>
+              <div class="col-md-6">
+                <div class="card-body ms-3">
+                  <h5 class="text-muted mb-1">${cart[i].title}</h5>
+                  <h4 class="fw-bold">Price €${cart[i].price}</h3>
+                </div>
+              </div>
+              <div class="col-md-4 d-flex flex-column justify-content-between align-items-end">
+                <div class="mb-auto"><p><i type="button" class="bi bi-trash3-fill text-danger fs-4" onclick="removeItem(${i})"></i></p><br>  </div>
+                <div class="btn-group align-self-end" role="group" aria-label="Change amount">
+                  <button type="button" class="btn rounded-start-4 text-bg-custom">-</button>
+                  <button id="qty${i}" class="btn btn-nobtn text-bg-custom">1</button>
+                  <button type="button" class="btn rounded-end-4 text-bg-custom">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      `
+    }
+  }
+}
+document.getElementById("cart-container").innerHTML = cartOutput
+}
+
+function removeItem(itemIndex){
+  let cart = [];
+  if (localStorage.getItem("cart") != null){
+    cart = JSON.parse(localStorage.getItem("cart"));
+    cart.splice(itemIndex, 1);
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }
+  loadCart();
+}
+
+function changeQty(changeBy){
+
+}
+
+function calculateTotal(){
+  let cart = [];
+  let sum = 0;
+  if (localStorage.getItem("cart") != null){
+    cart = JSON.parse(localStorage.getItem("cart"))
+    cart.forEach(item => sum += item.price);
+  }
+  return sum.toFixed(2);
+}
+
 //Validation for the form
 //Valid expressions for each field
 const regexName = new RegExp(/^(?!.{50})[A-Za-zåäöÅÄÖ\s]+\s[A-Za-zåäöÅÄÖ\s]+$/); //Done
@@ -69,9 +173,10 @@ function validateFields(e) {
 }
 //End of validation script
 
-//Close modal and go back to homepage
-function closeModal() {
+//Close successful purchase modal, clear Local Storage and go back to homepage
+function closeSuccessfulPurchaseModal() {
   let success = new bootstrap.Modal(document.getElementById("paymentAccepted"));
+  localStorage.removeItem("cart");
   success.hide();
   setTimeout(
     () => window.location.href = "index.html",
@@ -79,7 +184,7 @@ function closeModal() {
   )
 }
 
-//Fetch products and populate index.html
+//Fetch products from API and populate product cards on index.html
 let products = [];
 async function fetchProducts() {
   try {
@@ -96,7 +201,7 @@ async function populateProducts() {
   await fetchProducts();
   let output = `<div class="row">`;
   for (let i in products){
-    if (i % 4 == 0)
+    if (i % 4 == 0 && i != 0)
       output += `</div><div class="row">`;
 
     output += `
@@ -115,7 +220,7 @@ async function populateProducts() {
                 <!-- bottom section -->
                 <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
                     <span class="price-text">€${products[i].price.toFixed(2)}</span>
-                    <button class="btn btn-custom px-4 py-2 rounded-5" onclick="addToCart(${i})">Buy</button>
+                    <button class="btn btn-custom px-4 py-2 rounded-5" onclick="addToCart(${i})">Add to cart</button>
                 </div>
             </div>
         </div>`
@@ -128,7 +233,6 @@ async function populateProducts() {
 
 //Add to cart
 function addToCart(index){
-  console.log("funkar" + products[index]);
   let cart = [];
   if (localStorage.getItem("cart") === null){
     cart.push(products[index])
@@ -136,7 +240,7 @@ function addToCart(index){
     cart = JSON.parse(localStorage.getItem("cart"))
     cart.push(products[index])
   }
-  console.log(cart);
+  console.log(cart); //TODO: ta bort
   localStorage.setItem("cart", JSON.stringify(cart)); 
 }
 
@@ -147,7 +251,6 @@ function getFirstFiveWords(text) {
 
 function scrollToBottom(){
   const scrollHeight = document.body.scrollHeight;
-
   window.scrollTo(0, scrollHeight);
 }
 
@@ -157,8 +260,5 @@ function populateProductPopUp(index){
   document.getElementById('modal-desc').textContent = products[index].description;
   document.getElementById('modal-img').src = products[index].image;
   document.getElementById('buy-button').innerHTML = `<button class="btn btn-custom px-4 py-2 rounded-5" onclick="addToCart(${index})">Add to cart</button>`;
-
-  //const buyBtn = document.querySelector('#productModal .btn-custom');
-  //buyBtn.href = `form.html?title=${encodeURIComponent(products[index].title)}&price=${products[index].price.toFixed(2)}&image=${encodeURIComponent(products[index].image)}`;
 }
 
