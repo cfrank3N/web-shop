@@ -1,13 +1,14 @@
 //Populate form.html with content of Cart
+let cart = [];
+
 function loadCart(){
   let cartOutput = ``;
-  let cart = [];
   if (localStorage.getItem("cart") === null){
-    cartOutput = `<h4 class="ms-5">Your cart is empty</h4>`
+    cartOutput = `<h4 class="ms-5">... is empty</h4>`
   } else {
-    cart = JSON.parse(localStorage.getItem("cart"))
+    cart = JSON.parse(localStorage.getItem("cart"));
     for (let i in cart){
-      if (i == 0){
+      if (i == 0){    //first row contains two columns, one for the product and one for order summary
         cartOutput += `
       <div class="row my-3">
         <div class="col-sm-9">
@@ -25,9 +26,9 @@ function loadCart(){
               <div class="col-md-4 d-flex flex-column justify-content-between align-items-end">
                 <div class="mb-auto"><p><i type="button" class="bi bi-trash3-fill text-danger fs-4" onclick="removeItem(${i})"></i></p><br>  </div>
                 <div class="btn-group align-self-end" role="group" aria-label="Change amount">
-                  <button type="button" class="btn rounded-start-4 text-bg-custom">-</button>
-                  <div id="qty${i}" class="btn btn-nobtn text-bg-custom">1</div>
-                  <button type="button" class="btn rounded-end-4 text-bg-custom">+</button>
+                  <button type="button" class="btn rounded-start-4 text-bg-custom" onclick="changeQty(${i}, -1)">-</button>
+                  <div class="btn btn-nobtn text-bg-custom">${cart[i].qty}</div>
+                  <button type="button" class="btn rounded-end-4 text-bg-custom" onclick="changeQty(${i}, 1)">+</button>
                 </div>
               </div>
             </div>
@@ -62,9 +63,9 @@ function loadCart(){
               <div class="col-md-4 d-flex flex-column justify-content-between align-items-end">
                 <div class="mb-auto"><p><i type="button" class="bi bi-trash3-fill text-danger fs-4" onclick="removeItem(${i})"></i></p><br>  </div>
                 <div class="btn-group align-self-end" role="group" aria-label="Change amount">
-                  <button type="button" class="btn rounded-start-4 text-bg-custom">-</button>
-                  <button id="qty${i}" class="btn btn-nobtn text-bg-custom">1</button>
-                  <button type="button" class="btn rounded-end-4 text-bg-custom">+</button>
+                  <button type="button" class="btn rounded-start-4 text-bg-custom" onclick="changeQty(${i}, -1)">-</button>
+                  <button class="btn btn-nobtn text-bg-custom">${cart[i].qty}</button>
+                  <button type="button" class="btn rounded-end-4 text-bg-custom" onclick="changeQty(${i}, 1)">+</button>
                 </div>
               </div>
             </div>
@@ -72,36 +73,46 @@ function loadCart(){
         </div>
       </div>
       `
+      }
     }
   }
-}
-document.getElementById("cart-container").innerHTML = cartOutput
+  document.getElementById("cart-container").innerHTML = cartOutput
 }
 
 function removeItem(itemIndex){
-  let cart = [];
-  if (localStorage.getItem("cart") != null){
-    cart = JSON.parse(localStorage.getItem("cart"));
-    cart.splice(itemIndex, 1);
+  cart.splice(itemIndex, 1);
+  if (cart.length == 0){
+    emptyCart();
+  } else {
     localStorage.setItem("cart", JSON.stringify(cart));
+    loadCart();
   }
-  loadCart();
 }
 
-function changeQty(changeBy){
-
+function changeQty(index, changeBy){
+  cart = JSON.parse(localStorage.getItem("cart"));
+  if (cart[index].qty == 1 && changeBy == -1){
+    removeItem(index);
+  } else {
+    cart[index].qty = cart[index].qty + changeBy;
+    localStorage.setItem("cart", JSON.stringify(cart)); 
+    loadCart();
+  }
 }
 
 function calculateTotal(){
-  let cart = [];
   let sum = 0;
   if (localStorage.getItem("cart") != null){
     cart = JSON.parse(localStorage.getItem("cart"))
-    cart.forEach(item => sum += item.price);
+    cart.forEach(item => sum += item.price * item.qty);
   }
   return sum.toFixed(2);
 }
 
+function emptyCart(){
+  localStorage.removeItem("cart");
+  loadCart();
+}
 //Validation for the form
 //Valid expressions for each field
 const regexName = new RegExp(/^(?!.{50})[A-Za-zåäöÅÄÖ\s]+\s[A-Za-zåäöÅÄÖ\s]+$/); //Done
@@ -190,8 +201,8 @@ async function fetchProducts() {
   try {
     const response = await fetch('https://fakestoreapi.com/products');
     products = await response.json();
+    //products.forEach(entry => Object.defineProperty(entry, "qty", {value:0}));
     console.log(products);
-    
   } catch (error) {
     console.error("Error fetching products:", error);
   }
@@ -205,25 +216,26 @@ async function populateProducts() {
       output += `</div><div class="row">`;
 
     output += `
-        <div class="col-sm-6 col-lg-3 my-3">
-            <div class="card h-100 shadow scale-on-hover cursor-pointer rounded-5" role="button">
-                <div class="card-body" data-bs-toggle="modal" data-bs-target="#productModal" onclick="populateProductPopUp(${i})">
-                    <!-- pics -->
-                    <div class="position-relative mt-3 card-image-container">
-                        <img src="${products[i].image}" class="card-img-top card-image-custom position-absolute top-50 start-50 translate-middle img-fluid w-75 object-fit-contain" alt="${products[i].title}">
-                    </div>
-                    <!-- info -->
-                    <div class="mt-4 ms-2">
-                        <h5 class="product-title">${getFirstFiveWords(products[i].title)}</h5>
-                    </div>
-                </div>
-                <!-- bottom section -->
-                <div class="d-flex justify-content-between align-items-center mx-4 mb-4">
-                    <span class="price-text">€${products[i].price.toFixed(2)}</span>
-                    <button class="btn btn-custom px-4 py-2 rounded-5" onclick="addToCart(${i})">Add to cart</button>
-                </div>
-            </div>
-        </div>`
+  <div class="col-sm-6 col-lg-3 my-3">
+    <div class="card h-100 shadow scale-on-hover rounded-5" role="button">
+      <div class="card-body" data-bs-toggle="modal" data-bs-target="#productModal" onclick="populateProductPopUp(${i})">
+        <!-- pics -->
+        <div class="position-relative mt-3 card-image-container">
+          <img src="${products[i].image}" class="card-img-top card-image-custom position-absolute top-50 start-50 translate-middle img-fluid w-75 object-fit-contain" alt="${products[i].title}">
+        </div>
+        <!-- info -->
+        <div class="mt-4 ms-2">
+          <h5 class="product-title">${getFirstFiveWords(products[i].title)}</h5>
+        </div>
+        </div>
+        <!-- bottom section -->
+        <div class="d-flex justify-content-between align-items-center mx-3 mb-4">
+          <span class="price-text">€${products[i].price.toFixed(2)}</span>
+          <button class="btn btn-custom px-4 py-2 rounded-5" onclick="addToCart(${i})">Add to cart</button>
+
+      </div>
+    </div>
+  </div>`
   }
 
   output += `</div>`;
@@ -233,14 +245,26 @@ async function populateProducts() {
 
 //Add to cart
 function addToCart(index){
-  let cart = [];
+  let product = { ...products[index]};
+  let itemUpdated = false;
+  
   if (localStorage.getItem("cart") === null){
-    cart.push(products[index])
+    product.qty = 1;
+    cart.push(product);
+    itemUpdated = true;
   } else {
-    cart = JSON.parse(localStorage.getItem("cart"))
-    cart.push(products[index])
+    cart = JSON.parse(localStorage.getItem("cart"));
+    cart.forEach(item => {
+      if (item.id === product.id){
+        item.qty = item.qty + 1;
+        itemUpdated = true;
+      }
+    });
+    if (!itemUpdated){
+      product.qty = 1;
+      cart.push(product)
+    }
   }
-  console.log(cart); //TODO: ta bort
   localStorage.setItem("cart", JSON.stringify(cart)); 
 }
 
