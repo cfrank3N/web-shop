@@ -6,10 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Your cart</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" type="text/css">
-</head>
-
-<body>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <style>
+    .cart-image-custom {
+      max-height: 7rem;
+    }
+
     .btn-custom {
       background-color: #EB5E28;
     }
@@ -29,13 +31,25 @@
     .text-orange {
       color: #EB5E28;
     }
-  </style>
-  <!--Nav-bar-->
 
+    .btn-nobtn{
+      cursor: default;
+    }
+
+    .btn-nobtn:hover{
+      cursor: default;
+      background-color: #f1f1f1;
+    }
+    
+  </style>
+</head>
+
+<body onload="loadCart()">
+  <!--Nav-bar-->
   <nav class="navbar sticky-top navbar-expand-sm navbar-light bg-white shadow-sm">
     <div class="container my-3">
-      <a href="index.html" class="navbar-brand mb-0 h1">
-        Battle Shop
+      <a href="index.html" class="navbar-brand">
+        <h3 class="fw-bold">divra</h3>
       </a>
       <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" class="navbar-toggler"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,13 +75,17 @@
             <a class="nav-link" href="#">
               <img class="nav-icon" src="./img/nav/account.png" alt="Account Icon" height="15" draggable="false">
             </a>
-          </li>
-          <li class="nav-item d-flex align-items-center">
-            <a class="nav-link" href="#">
-              <img class="nav-icon" src="./img/nav/shopping-cart.png" alt="Shopping Cart Icon" height="15"
-                draggable="false">
-            </a>
           </li> -->
+          <li class="nav-item d-flex align-items-center">
+            <a class="nav-link position-relative" href="form.html">
+              <img class="nav-icon" src="./img/nav/shopping-cart.png" alt="Shopping Cart Icon" height="20"
+                draggable="false">
+                <span id="cart-counter" class="position-absolute top-25 start-100 translate-middle badge rounded-pill bg-success">
+                  0
+                  <span class="visually-hidden">items in cart</span>
+                </span>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
@@ -76,25 +94,14 @@
   <!--Start of card layout-->
   <div class="container">
     <h3 class="my-5 fw-bold">Your cart</h3>
-    <div class="col-sm-7">
-      <div class="card p-3 border-0 rounded-5 shadow-sm">
-        <div class="row g-0 align-items-center">
-          <div class="col-md-4">
+  </div>
+  <div class="container" id="cart-container">
 
-
-            <img id="product-img" src="img/nav/bioglow.png" class="img-fluid rounded-4" alt="Product Image" />
-          </div>
-
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="text-muted mb-1" id="product-name">Product Name Unknown Product</h5>
-
-              <h3 class="fw-bold" id="product-price">Price SEK 0.00</h3>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  </div>
+  <div class="container text-end">
+    <button type="button" class="btn btn-custom text-white rounded-pill" onclick="emptyCart()">
+      Empty cart
+    </button>
   </div>
   <!--End of card layout-->
   <!--Start of Form-->
@@ -159,7 +166,7 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-md-3 text-start">
-          <h4>Battle Shop</h4>
+          <h4>divra</h4>
           <p class="text-start">
             We are five students from Nackademin, working together to develop and refine our skills in web development. 
           </p>
@@ -170,7 +177,7 @@
             Facebook</a><br>
           <a href="http://x.com/" class="text-decoration-none text-dark"><i class="bi bi-twitter"></i> Twitter </a><br>
           <a href="http://instagram.com/" class="text-decoration-none text-dark"><i
-              class="bi bi-instagram"></i>Instagram </a>
+              class="bi bi-instagram"></i> Instagram</a>
         </div>
       </div>
       <div class="d-flex justify-content-between mt-4 text-secondary">
@@ -199,7 +206,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-custom rounded-pill w-100 text-white" data-bs-dismiss="modal"
-            onclick="closeModal()">
+            onclick="closeSuccessfulPurchaseModal()">
             Close
           </button>
         </div>
