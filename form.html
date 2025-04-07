@@ -49,7 +49,7 @@
   <nav class="navbar sticky-top navbar-expand-sm navbar-light bg-white shadow-sm">
     <div class="container my-3">
       <a href="index.html" class="navbar-brand">
-        <h3>divra</h3>
+        <h3 class="fw-bold">divra</h3>
       </a>
       <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" class="navbar-toggler"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -77,9 +77,13 @@
             </a>
           </li> -->
           <li class="nav-item d-flex align-items-center">
-            <a class="nav-link" href="form.html">
-              <img class="nav-icon" src="./img/nav/shopping-cart.png" alt="Shopping Cart Icon" height="15"
+            <a class="nav-link position-relative" href="form.html">
+              <img class="nav-icon" src="./img/nav/shopping-cart.png" alt="Shopping Cart Icon" height="20"
                 draggable="false">
+                <span id="cart-counter" class="position-absolute top-25 start-100 translate-middle badge rounded-pill bg-success">
+                  0
+                  <span class="visually-hidden">items in cart</span>
+                </span>
             </a>
           </li>
         </ul>

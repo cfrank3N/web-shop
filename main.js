@@ -2,6 +2,7 @@
 let cart = [];
 
 function loadCart(){
+  updateCartCounter();
   let cartOutput = ``;
   if (localStorage.getItem("cart") === null){
     cartOutput = `<h4 class="ms-5">... is empty</h4>`
@@ -103,7 +104,7 @@ function changeQty(index, changeBy){
 function calculateTotal(){
   let sum = 0;
   if (localStorage.getItem("cart") != null){
-    cart = JSON.parse(localStorage.getItem("cart"))
+    cart = JSON.parse(localStorage.getItem("cart"));
     cart.forEach(item => sum += item.price * item.qty);
   }
   return sum.toFixed(2);
@@ -266,6 +267,16 @@ function addToCart(index){
     }
   }
   localStorage.setItem("cart", JSON.stringify(cart)); 
+  updateCartCounter();
+}
+
+function updateCartCounter(){
+  let count = 0;
+  if (localStorage.getItem("cart") != null){
+    cart = JSON.parse(localStorage.getItem("cart"));
+    cart.forEach(item => count += 1 * item.qty);
+  }  
+  document.getElementById("cart-counter").innerHTML = count;
 }
 
 function getFirstFiveWords(text) {
