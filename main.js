@@ -1,27 +1,27 @@
 //Populate form.html with content of Cart
 let cart = [];
 
-function loadCart(){
+function loadCart() {
   updateCartCounter();
   let cartOutput = ``;
-  if (localStorage.getItem("cart") === null){
+  if (localStorage.getItem("cart") === null) {
     cartOutput = `<h4 class="ms-5">... is empty</h4>`
   } else {
     cart = JSON.parse(localStorage.getItem("cart"));
-    for (let i in cart){
-      if (i == 0){    //first row contains two columns, one for the product and one for order summary
-        cartOutput += `
+    for (let i in cart) {
+      cartOutput += `
       <div class="row my-3">
         <div class="col-sm-9">
           <div class="card p-3 border-0 rounded-5 shadow-sm">
-            <div class="row g-0 align-items-center">
-              <div class="col-md-2">
-                <img src="${cart[i].image}" class="img-fluid rounded-4 cart-image-custom" alt="${cart[i].title}">
+            <div class="row g-0">
+              <div class="col-md-2 position-relative">
+                <img src="${cart[i].image}" class="img-fluid position-absolute top-50 start-50 translate-middle rounded-4 cart-image-custom" alt="${cart[i].title}">
               </div>
               <div class="col-md-6">
                 <div class="card-body ms-3">
-                  <h5 class="text-muted mb-1">${cart[i].title}</h5>
-                  <h4 class="fw-bold">Price €${cart[i].price}</h3>
+                  <h5 class="text-muted mb-2">${cart[i].title}</h5>
+                  <h5 class="fw-bold">Price: €${cart[i].price}</h5>
+                  <span id="item-total" class="fw-bold">Item total: €${(cart[i].price * cart[i].qty).toFixed(2)}</span>
                 </div>
               </div>
               <div class="col-md-4 d-flex flex-column justify-content-between align-items-end">
@@ -34,47 +34,21 @@ function loadCart(){
               </div>
             </div>
           </div>
-        </div>
+        </div>`
+      if (i == 0) {    //first row contains two columns, one for the product and one for order summary
+        cartOutput += `
         <div class="col-sm-3">
           <div class="card p-4 border-0 rounded-5 shadow-sm">
             <h3>Order summary</h3>
             <div class="row mt-3">
-              <div class="col-6"><p>Total</p></div>
+              <div class="col-6"><p>Total:</p></div>
               <div class="col-6"><p id="total-price" class="fw-bold text-end">€${calculateTotal()}</p></div>
             </div>
           </div>
         </div>
-      </div>
-      `
-      } else {
-      cartOutput += `
-      <div class="row my-3">
-        <div class="col-sm-9">
-          <div class="card p-3 border-0 rounded-5 shadow-sm">
-            <div class="row g-0 align-items-center">
-              <div class="col-md-2">
-                <img src="${cart[i].image}" class="img-fluid rounded-4 cart-image-custom" alt="${cart[i].title}">
-              </div>
-              <div class="col-md-6">
-                <div class="card-body ms-3">
-                  <h5 class="text-muted mb-1">${cart[i].title}</h5>
-                  <h4 class="fw-bold">Price €${cart[i].price}</h3>
-                </div>
-              </div>
-              <div class="col-md-4 d-flex flex-column justify-content-between align-items-end">
-                <div class="mb-auto"><p><i type="button" class="bi bi-trash3-fill text-danger fs-4" onclick="removeItem(${i})"></i></p><br>  </div>
-                <div class="btn-group align-self-end" role="group" aria-label="Change amount">
-                  <button type="button" class="btn rounded-start-4 text-bg-custom" onclick="changeQty(${i}, -1)">-</button>
-                  <button class="btn btn-nobtn text-bg-custom">${cart[i].qty}</button>
-                  <button type="button" class="btn rounded-end-4 text-bg-custom" onclick="changeQty(${i}, 1)">+</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      `
-      }
+      </div>`
+      } else
+        cartOutput += `</div>`;
     }
   }
   document.getElementById("cart-container").innerHTML = cartOutput
@@ -213,9 +187,6 @@ async function populateProducts() {
   await fetchProducts();
   let output = `<div class="row">`;
   for (let i in products){
-    if (i % 4 == 0 && i != 0)
-      output += `</div><div class="row">`;
-
     output += `
   <div class="col-sm-6 col-lg-3 my-3">
     <div class="card h-100 shadow scale-on-hover rounded-5" role="button">
@@ -232,7 +203,7 @@ async function populateProducts() {
         <!-- bottom section -->
         <div class="d-flex justify-content-between align-items-center mx-3 mb-4">
           <span class="price-text">€${products[i].price.toFixed(2)}</span>
-          <button class="btn btn-custom px-4 py-2 rounded-5" onclick="addToCart(${i})">Add to cart</button>
+          <button class="btn btn-custom px-3 py-2 rounded-5" onclick="addToCart(${i})">Add to cart</button>
 
       </div>
     </div>
