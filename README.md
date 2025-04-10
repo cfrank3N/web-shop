@@ -1,9 +1,6 @@
 # web shop
 
-Developed by [Arvid Utas] (https://github.com/ArvidUtas) 
-
-This is a continuation on a project developed by:
-
+Developed by: 
 - [Adam](https://github.com/cfrank3N) 
 - [Isaac](https://github.com/isaacBakall29) 
 - [Samuel](https://github.com/MakuMoon) 
@@ -12,7 +9,7 @@ This is a continuation on a project developed by:
 
 at Nackademin 2025.
 
-This is a project for the course Frontend taught by Mahmud Al Hakim.
+This is a project for the course in Frontend by Mahmud Al Hakim.
 
 
 # Styling
