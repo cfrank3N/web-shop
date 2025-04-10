@@ -1,8 +1,7 @@
 //Populate form.html with content of Cart
-let cart = [];
-
 function loadCart() {
   updateCartCounter();
+  let cart = [];
   let cartOutput = ``;
   if (localStorage.getItem("cart") === null) {
     cartOutput = `<h4 class="ms-5">... is empty</h4>`
@@ -55,6 +54,7 @@ function loadCart() {
 }
 
 function removeItem(itemIndex){
+  let cart = JSON.parse(localStorage.getItem("cart"));
   cart.splice(itemIndex, 1);
   if (cart.length == 0){
     emptyCart();
@@ -65,7 +65,7 @@ function removeItem(itemIndex){
 }
 
 function changeQty(index, changeBy){
-  cart = JSON.parse(localStorage.getItem("cart"));
+  let cart = JSON.parse(localStorage.getItem("cart"));
   if (cart[index].qty == 1 && changeBy == -1){
     removeItem(index);
   } else {
@@ -78,7 +78,7 @@ function changeQty(index, changeBy){
 function calculateTotal(){
   let sum = 0;
   if (localStorage.getItem("cart") != null){
-    cart = JSON.parse(localStorage.getItem("cart"));
+    let cart = JSON.parse(localStorage.getItem("cart"));
     cart.forEach(item => sum += item.price * item.qty);
   }
   return sum.toFixed(2);
@@ -176,7 +176,6 @@ async function fetchProducts() {
   try {
     const response = await fetch('https://fakestoreapi.com/products');
     products = await response.json();
-    //products.forEach(entry => Object.defineProperty(entry, "qty", {value:0}));
     console.log(products);
   } catch (error) {
     console.error("Error fetching products:", error);
@@ -197,7 +196,7 @@ async function populateProducts() {
         </div>
         <!-- info -->
         <div class="mt-4 ms-2">
-          <h5 class="product-title">${getFirstFiveWords(products[i].title)}</h5>
+          <h5 class="product-title fw-bold lh-sm fs-6">${getFirstFiveWords(products[i].title)}</h5>
         </div>
         </div>
         <!-- bottom section -->
@@ -219,6 +218,7 @@ async function populateProducts() {
 function addToCart(index){
   let product = { ...products[index]};
   let itemUpdated = false;
+  let cart = [];
   
   if (localStorage.getItem("cart") === null){
     product.qty = 1;
@@ -228,7 +228,7 @@ function addToCart(index){
     cart = JSON.parse(localStorage.getItem("cart"));
     cart.forEach(item => {
       if (item.id === product.id){
-        item.qty = item.qty + 1;
+        item.qty++;
         itemUpdated = true;
       }
     });
@@ -243,6 +243,7 @@ function addToCart(index){
 
 function updateCartCounter(){
   let count = 0;
+  let cart = [];
   if (localStorage.getItem("cart") != null){
     cart = JSON.parse(localStorage.getItem("cart"));
     cart.forEach(item => count += 1 * item.qty);
